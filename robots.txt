@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://slavonn3.github.io/barbermatch-lviv/sitemap.xml
+
