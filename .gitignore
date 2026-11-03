@@ -1,0 +1,19 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+
+# Dependencies / build
+node_modules/
+dist/
+*.log
+
+# Local drafts and reports (not part of the site)
+*.docx
+*.pdf
+_draft*
+_prototype*
