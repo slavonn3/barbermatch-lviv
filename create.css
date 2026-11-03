@@ -1,0 +1,618 @@
+/* BarberMatch Lviv — сторінка «Нова заявка на модель».
+   Розкладка, відступи, типографіка й кнопки зроблені класами Tailwind у create.html.
+   Тут лише те, що незручно виражати утилітами: стани чипів і карток через :has(),
+   стани днів календаря, крокові індикатори та темна тема для цих компонентів.
+   Кольори беруться з токенів css/style.css, тому автоматично перемикаються з темою. */
+
+/* ---------- Hero-смуга ---------- */
+.create-hero-backdrop {
+  background-image:
+    linear-gradient(90deg, #14261C 0%, rgb(20 38 28 / 90%) 55%, rgb(20 38 28 / 55%) 100%),
+    url("assets/images/hero_bg.webp");
+  background-position: center 70%;
+  background-size: cover;
+}
+
+/* ---------- Індикатор кроків ---------- */
+.cr-step-btn {
+  display: grid;
+  width: 100%;
+  min-height: 44px;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 6px 8px;
+  padding: 0 0 4px;
+  border: 0;
+  background: none;
+  color: rgb(249 243 232 / 60%);
+  cursor: default;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+}
+
+.cr-step-bar {
+  grid-column: 1 / -1;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: rgb(249 243 232 / 20%);
+  transition: background-color var(--transition-base);
+}
+
+.cr-step-num {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 1px solid rgb(249 243 232 / 35%);
+  border-radius: var(--radius-circle);
+  font-size: var(--text-xs);
+}
+
+.cr-step-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cr-step-btn.is-done,
+.cr-step-btn[aria-current="step"] {
+  color: var(--color-text-on-dark);
+}
+
+.cr-step-btn.is-done {
+  cursor: pointer;
+}
+
+.cr-step-btn.is-done:hover .cr-step-label {
+  color: #E9B879;
+}
+
+.cr-step-btn.is-done .cr-step-bar,
+.cr-step-btn[aria-current="step"] .cr-step-bar {
+  background: var(--color-accent-cta);
+}
+
+.cr-step-btn[aria-current="step"] .cr-step-num,
+.cr-step-btn.is-done .cr-step-num {
+  border-color: var(--color-accent-cta);
+  background: var(--color-accent-cta);
+  color: var(--color-surface-dark);
+}
+
+@media (max-width: 639.98px) {
+  .cr-step-btn {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+
+  .cr-step-label {
+    display: none;
+  }
+}
+
+/* ---------- Поля форми ---------- */
+.cr-field {
+  margin-top: var(--spacing-lg);
+}
+
+.cr-label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.cr-opt {
+  margin-left: 4px;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-regular);
+}
+
+.cr-input {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-card);
+  color: var(--color-text-primary);
+  font: inherit;
+  font-size: var(--text-base);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.cr-input::placeholder {
+  color: #7A847D;
+}
+
+textarea.cr-input {
+  min-height: 112px;
+  resize: vertical;
+}
+
+.cr-input:hover {
+  border-color: var(--color-border-hover);
+}
+
+.cr-input:focus {
+  border-color: var(--color-accent-cta);
+  box-shadow: var(--shadow-accent-selection);
+  outline: none;
+}
+
+.cr-input[aria-invalid="true"] {
+  border-color: var(--color-status-error);
+  background: var(--color-status-error-bg);
+}
+
+.cr-error {
+  margin-top: 6px;
+  color: var(--color-status-error);
+  font-size: var(--text-small-meta);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ---------- Чипи (radio/checkbox) ---------- */
+.cr-chip,
+.cr-time,
+.cr-option {
+  position: relative;
+  cursor: pointer;
+}
+
+.cr-chip input,
+.cr-time input,
+.cr-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cr-chip > span,
+.cr-time > span {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 16px;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-card);
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.cr-time > span {
+  width: 100%;
+  border-radius: var(--radius-md);
+  font-variant-numeric: tabular-nums;
+}
+
+.cr-chip-check {
+  display: none;
+  width: 16px;
+  height: 16px;
+}
+
+.cr-chip:hover > span,
+.cr-time:hover > span {
+  border-color: var(--color-accent-cta);
+}
+
+.cr-chip input:checked + span,
+.cr-time input:checked + span {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-text-on-dark);
+}
+
+.cr-chip input:checked + span .cr-chip-check {
+  display: inline-block;
+}
+
+.cr-time input:checked + span {
+  border-color: var(--color-accent-cta);
+  background: var(--color-accent-cta);
+  color: var(--color-surface-dark);
+  font-weight: var(--font-weight-semibold);
+}
+
+.cr-time input:disabled + span {
+  border-style: dashed;
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: .55;
+}
+
+.cr-chip input:focus-visible + span,
+.cr-time input:focus-visible + span {
+  outline: 3px solid var(--color-accent-cta);
+  outline-offset: 2px;
+}
+
+/* ---------- Картки-варіанти (тип послуги, умови оплати) ---------- */
+.cr-option {
+  display: grid;
+  min-height: 100%;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 2px 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-card);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.cr-option:hover {
+  border-color: var(--color-accent-cta);
+}
+
+.cr-option-icon {
+  display: inline-flex;
+  grid-row: span 2;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  color: var(--color-primary);
+}
+
+.cr-option-icon .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cr-option-icon .icon + .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.cr-option-title {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.cr-option-text {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.35;
+}
+
+.cr-option:has(input:checked) {
+  border-color: var(--color-accent-cta);
+  background: #FFF8EE;
+  box-shadow: 0 0 0 2px rgb(200 125 50 / 35%);
+}
+
+.cr-option:has(input:checked) .cr-option-icon {
+  background: var(--color-accent-cta);
+  color: var(--color-surface-dark);
+}
+
+.cr-option:has(input:focus-visible) {
+  outline: 3px solid var(--color-accent-cta);
+  outline-offset: 2px;
+}
+
+fieldset[aria-invalid="true"] .cr-option {
+  border-color: var(--color-status-error);
+}
+
+@media (min-width: 640px) {
+  .cr-option {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    gap: 4px;
+    padding: 16px;
+  }
+
+  .cr-option-icon {
+    grid-row: auto;
+    margin-bottom: 6px;
+  }
+}
+
+/* ---------- Календар ---------- */
+.cr-calendar {
+  align-self: start;
+  width: 100%;
+  max-width: 360px;
+  padding: 16px;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-primary);
+}
+
+.cr-icon-btn {
+  display: inline-grid;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-circle);
+  background: var(--color-surface-card);
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--text-xl);
+  line-height: 1;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.cr-icon-btn:hover:not(:disabled) {
+  border-color: var(--color-accent-cta);
+}
+
+.cr-icon-btn:disabled {
+  cursor: not-allowed;
+  opacity: .35;
+}
+
+.cr-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.cr-weekdays {
+  margin-bottom: 4px;
+}
+
+.cr-weekdays span {
+  padding: 4px 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+}
+
+.cr-weekdays span:nth-child(n + 6) {
+  color: var(--color-text-accent);
+}
+
+#cal-grid {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.cr-day {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  min-height: 36px;
+  max-height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-card);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--font-weight-medium);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.cr-day:hover:not(:disabled) {
+  border-color: var(--color-accent-cta);
+}
+
+.cr-day.is-weekend {
+  color: var(--color-text-accent);
+}
+
+.cr-day.is-today {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.cr-day[aria-pressed="true"] {
+  border-color: var(--color-accent-cta);
+  background: var(--color-accent-cta);
+  color: var(--color-surface-dark);
+  font-weight: var(--font-weight-bold);
+}
+
+.cr-day:disabled {
+  border-color: transparent;
+  background: transparent;
+  color: #A3ABA5;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.cr-day:focus-visible {
+  outline: 3px solid var(--color-focus-indicator);
+  outline-offset: 1px;
+}
+
+.cr-legend {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.cr-legend-today {
+  border: 2px solid var(--color-primary);
+}
+
+.cr-legend-on {
+  background: var(--color-accent-cta);
+}
+
+.cr-legend-off {
+  background: repeating-linear-gradient(135deg, #C9CFCB 0 2px, transparent 2px 4px);
+}
+
+.cr-mini-btn {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-card);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-semibold);
+  transition: border-color var(--transition-fast);
+}
+
+.cr-mini-btn:hover {
+  border-color: var(--color-accent-cta);
+}
+
+/* Обрані дні */
+.cr-day-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 2px 2px 12px;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-secondary);
+  font-size: var(--text-sm);
+}
+
+.cr-day-chip button {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius-circle);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: var(--text-lg);
+}
+
+.cr-day-chip button:hover {
+  background: var(--color-surface-card);
+  color: var(--color-status-error);
+}
+
+/* ---------- Прев’ю картки ---------- */
+.cr-preview-card {
+  box-shadow: var(--shadow-md);
+}
+
+.cr-preview-card .slot-before-after {
+  height: 150px;
+  min-height: 150px;
+}
+
+.cr-preview-card .slot-title-row h3 {
+  overflow-wrap: anywhere;
+}
+
+.cr-preview-card .reliability strong {
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cr-preview-card .card-actions .button {
+  pointer-events: none;
+}
+
+.cr-preview-card.is-updated {
+  animation: cr-pulse .45s ease;
+}
+
+@keyframes cr-pulse {
+  0% { box-shadow: 0 0 0 0 rgb(200 125 50 / 55%); }
+  100% { box-shadow: 0 0 0 10px rgb(200 125 50 / 0%); }
+}
+
+@media (min-width: 1024px) {
+  #preview {
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+/* ---------- Анімація кроку ---------- */
+.cr-step:not([hidden]) {
+  animation: cr-step-in .25s ease;
+}
+
+@keyframes cr-step-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+dialog#done::backdrop {
+  background: rgb(20 38 28 / 60%);
+}
+
+/* ---------- Темна тема ---------- */
+[data-theme="dark"] .cr-option:has(input:checked) {
+  background: rgb(200 125 50 / 14%);
+}
+
+[data-theme="dark"] .cr-option-icon {
+  background: rgb(249 243 232 / 10%);
+  color: #E9B879;
+}
+
+[data-theme="dark"] .cr-chip input:checked + span {
+  border-color: #F9F3E8;
+  background: #F9F3E8;
+  color: #14261C;
+}
+
+[data-theme="dark"] .cr-calendar {
+  background: #14261C;
+}
+
+[data-theme="dark"] .cr-icon-btn {
+  color: #F9F3E8;
+}
+
+[data-theme="dark"] .cr-day.is-today,
+[data-theme="dark"] .cr-legend-today {
+  border-color: #E9B879;
+  box-shadow: inset 0 0 0 1px #E9B879;
+}
+
+[data-theme="dark"] .cr-day:disabled {
+  color: #6F7D73;
+}
+
+[data-theme="dark"] .cr-input::placeholder {
+  color: #93A097;
+}
+
+[data-theme="dark"] .cr-input[aria-invalid="true"] {
+  background: rgb(166 56 40 / 18%);
+}
+
+[data-theme="dark"] .cr-error {
+  color: #FFB4A6;
+}
+
+[data-theme="dark"] .cr-preview-card {
+  color: #F9F3E8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cr-step:not([hidden]),
+  .cr-preview-card.is-updated {
+    animation: none;
+  }
+}

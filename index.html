@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Шукаєте безкоштовні стрижки у Львові? Платформа об'єднує барберів-початківців та моделей. Платіть лише за розхідники та бронюйте онлайн без комісій!">
+  <title>Безкоштовні стрижки Львів | BarberMatch</title>
+  <script>try { if (localStorage.getItem('barbermatch-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) { /* без сховища — світла тема */ }</script>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1D442F',
+            darkSurface: '#14261C',
+            accent: '#C87D32',
+            accentHover: '#DF8E3C',
+            cream: '#F9F3E8',
+            creamMuted: '#EFE6D5',
+            borderWarm: '#D6CBB8',
+            textMain: '#18221D',
+            textMuted: '#5A655E',
+            success: '#2E7D32',
+            warning: '#ED6C02',
+            danger: '#D32F2F'
+          },
+          fontFamily: {
+            heading: ['"Crimson Text"', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="custom-styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body class="overflow-x-hidden font-sans" data-page="home">
+  <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-accent focus:px-4 focus:py-2 focus:text-darkSurface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" href="#main">Перейти до основного вмісту</a>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="n-tag" viewBox="0 0 24 24"><path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L3 13V3h10l7.6 7.6a2 2 0 010 2.8z"/><circle cx="7.5" cy="7.5" r="1.3"/></symbol>
+      <symbol id="n-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+      <symbol id="n-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></symbol>
+      <symbol id="n-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0112 0v5l1.5 2h-15z"/><path d="M10 21h4"/></symbol>
+      <symbol id="n-cash" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/><path d="M6.5 12h.01M17.5 12h.01"/></symbol>
+      <symbol id="n-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></symbol>
+      <symbol id="n-phone" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></symbol>
+      <symbol id="n-msg" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></symbol>
+      <symbol id="n-send" viewBox="0 0 24 24"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/></symbol>
+      <symbol id="n-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+      <symbol id="n-swap" viewBox="0 0 24 24"><path d="M8 4L4 8l4 4M4 8h16M16 20l4-4-4-4M20 16H4"/></symbol>
+      <symbol id="n-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol>
+    </defs>
+  </svg>
+  <header class="sticky top-0 z-50 text-textMain backdrop-blur-md bg-[#F0E7D4] border-b border-borderWarm">
+    <div class="flex items-center justify-between gap-4 h-16 max-w-7xl mx-auto px-4 sm:px-6 md:h-20 lg:px-8">
+      <a class="flex items-center shrink-0 gap-2 text-textMain focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html" aria-label="BarberMatch Lviv — головна">
+        <img class="brand-mark h-12 w-auto md:h-14" src="assets/images/logo.png" alt="" width="227" height="191">
+        <span class="font-heading font-semibold text-lg tracking-tight sm:text-xl md:text-2xl">BarberMatch</span>
+        <span class="hidden px-2 py-0.5 text-[#805018] dark:text-[#E9B879] text-xs bg-accent/20 border border-accent/40 rounded-full sm:inline-block">Львів</span>
+      </a>
+      <nav class="hidden items-center gap-6 whitespace-nowrap xl:flex" aria-label="Основна навігація">
+        <a class="text-textMain text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#slots">Вільні слоти</a>
+        <a class="text-textMain text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#why">Переваги</a>
+        <a class="text-textMain text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#match">Швидкий підбір</a>
+        <a class="text-textMain text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="barber.html">Профіль барбера</a>
+        <a class="text-textMain text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="create.html">Створити заявку</a>
+      </nav>
+      <div class="hidden items-center shrink-0 gap-3 xl:flex">
+        <div class="flex items-center p-1 bg-white/70 border border-borderWarm rounded-full" role="group" aria-label="Ваша роль">
+          <button class="px-3 py-2 font-semibold text-cream text-xs bg-primary rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" data-role="model" aria-pressed="true">Шукаю стрижку</button>
+          <button class="px-3 py-2 font-semibold text-textMain text-xs rounded-full transition-colors hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" data-role="barber" aria-pressed="false">Шукаю модель</button>
+        </div>
+      </div>
+      <button class="theme-toggle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" aria-label="Увімкнути темну тему" title="Увімкнути темну тему"><span aria-hidden="true">🌙</span></button>
+      <button class="px-3 py-2 text-textMain text-xl border border-borderWarm rounded-md transition-colors hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:hidden" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Відкрити меню">
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+    <div class="mobile-menu-panel absolute left-0 overflow-hidden pointer-events-none right-0 top-full -translate-y-2 max-h-0 border-b border-borderWarm opacity-0 shadow-xl duration-200 transition-all xl:hidden" id="mobileMenu" aria-hidden="true">
+      <nav class="grid gap-1 max-w-7xl mx-auto px-4 py-4 sm:px-6" aria-label="Мобільна навігація">
+        <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="#slots">Вільні слоти</a>
+        <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="#why">Переваги</a>
+        <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="#match">Швидкий підбір</a>
+        <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="barber.html">Профіль барбера</a>
+        <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="create.html">Створити заявку</a>
+        <div class="flex items-stretch gap-2 px-3 py-3 border-t border-borderWarm" role="group" aria-label="Ваша роль">
+          <button class="inline-flex flex-1 items-center justify-center px-3 py-2 min-h-10 font-semibold text-cream text-sm text-center leading-tight bg-primary rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" data-role="model" aria-pressed="true">Шукаю стрижку</button>
+          <button class="inline-flex flex-1 items-center justify-center px-3 py-2 min-h-10 font-semibold text-textMain text-sm text-center leading-tight border border-borderWarm rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" data-role="barber" aria-pressed="false">Шукаю модель</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="hero" class="hero-section" aria-labelledby="home-title">
+      <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow">Без комісій. Розрахунок на місці</p>
+          <h1 id="home-title">Безкоштовні та <em>стильні</em> стрижки від амбітних барберів Львова</h1>
+          <p class="hero-description">Оновлюй образ без переплат: плати лише за розхідники або отримуй доплату як модель. Обирай зручний час, переглядай портфоліо майстрів «До/Після» та записуйся у своєму районі без прихованих комісій.</p>
+          <div class="flex flex-col w-full hero-actions sm:flex-row sm:w-auto">
+            <a class="w-full button button-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:w-auto" href="#slots">Знайти вільний слот</a>
+            <a class="w-full button button-light-outline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:w-auto" href="create.html">Створити заявку на модель</a>
+          </div>
+          <ul class="hero-perks" aria-label="Переваги платформи">
+            <li><svg class="icon" aria-hidden="true"><use href="#n-shield"/></svg>Перевірені профілі</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#n-cash"/></svg>Без прихованих оплат</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#n-bell"/></svg>Нагадування про запис</li>
+          </ul>
+          <dl class="hero-metrics">
+            <div><dt>активних слотів зараз</dt><dd>14</dd></div>
+            <div><dt>районів Львова</dt><dd>6</dd></div>
+            <div><dt>години: нагадування</dt><dd>24 і 2</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="section why-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Переваги платформи</p>
+          <h2>Чому BarberMatch</h2>
+          <p>Замість чатів із десятками повідомлень — структура, довіра й чесна ціна.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="feature-icon-box"><span class="feature-icon i-match icon" aria-hidden="true"></span></span><h3>Чіткі вимоги замість чатів</h3><p>Тип волосся й бороди вказано в кожному слоті, без довгого листування.</p></article>
+          <article class="feature-card"><span class="feature-icon-box"><svg class="feature-icon icon" aria-hidden="true"><use href="#n-tag"/></svg></span><h3>Прозора ціна</h3><p>«Безкоштовно», «Розхідники» або «Доплата моделі» — умови видно до запису.</p></article>
+          <article class="feature-card"><span class="feature-icon-box"><svg class="feature-icon icon" aria-hidden="true"><use href="#n-shield"/></svg></span><h3>Довіра й репутація</h3><p>Верифікація майстрів, портфоліо «До/Після» та двосторонній рейтинг.</p></article>
+          <article class="feature-card"><span class="feature-icon-box"><span class="feature-icon i-cal icon" aria-hidden="true"></span></span><h3>Менше неявок</h3><p>Нагадування за 24 і 2 години до запису допомагають не пропустити візит.</p></article>
+        </div>
+        <article class="why-us">
+          <div class="why-us-intro"><p class="eyebrow">Знайомство без зайвих кроків</p><h3>Чому ми</h3><p>Барберам-початківцям потрібна практика на реальних моделях, а моделям — безпечний шлях до нового образу. Ми зводимо їх у Львові на прозорих умовах.</p></div>
+          <div class="audience-grid">
+            <article class="audience-card"><svg class="icon" aria-hidden="true"><use href="#n-user"/></svg><h4>Для моделей</h4><p>Обирай майстра за роботами, районом, вільним часом і зрозумілою вартістю.</p></article>
+            <article class="audience-card"><span class="i-cut icon" aria-hidden="true"></span><h4>Для барберів</h4><p>Знаходь моделей для практики, показуй роботи та формуй репутацію.</p></article>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="match" class="match-section section">
+      <div class="container">
+        <div class="match-panel">
+          <div class="match-heading-row">
+            <div class="match-title"><span class="i-match icon" aria-hidden="true"></span><div><p class="eyebrow">Три кроки до запису</p><h2>Швидкий підбір</h2></div></div>
+            <div class="match-role-switch role-switch" id="matchRole" role="group" aria-label="Роль для підбору">
+              <button type="button" class="is-active role-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" data-role="model" aria-pressed="true">Я модель</button>
+              <button type="button" class="role-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" data-role="barber" aria-pressed="false">Я барбер</button>
+            </div>
+          </div>
+          <ol class="match-progress" aria-label="Кроки швидкого підбору"><li class="is-active" aria-current="step"><span class="visually-hidden">Крок 1</span></li><li><span class="visually-hidden">Крок 2</span></li><li><span class="visually-hidden">Крок 3</span></li></ol>
+          <form id="matchForm" aria-label="Швидкий підбір">
+            <fieldset class="match-step" data-step="1">
+              <legend>Крок 1 · Яка стрижка потрібна?</legend>
+              <div class="choice-list service-choices">
+                <label><input type="checkbox" name="service" value="hair" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span><span class="i-cut icon" aria-hidden="true"></span>Стрижка</span></label>
+                <label><input type="checkbox" name="service" value="beard" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span><span class="i-beard icon" aria-hidden="true"></span>Борода</span></label>
+                <label><input type="checkbox" name="service" value="combo" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span><span class="service-choice-icons" aria-hidden="true"><span class="i-cut icon"></span><span class="i-beard icon"></span></span>Комплекс</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="match-step" data-step="2" hidden>
+              <legend>Крок 2 · Умови та район</legend>
+              <div class="match-chip-groups">
+                <fieldset class="match-choice-group">
+                  <legend><svg class="icon" aria-hidden="true"><use href="#n-tag"/></svg>Фінансові умови</legend>
+                  <div class="choice-list">
+                    <label><input type="radio" name="matchPrice" value="" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Будь-які</span></label>
+                    <label><input type="radio" name="matchPrice" value="free" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Безкоштовно</span></label>
+                    <label><input type="radio" name="matchPrice" value="supplies" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Розхідники</span></label>
+                    <label><input type="radio" name="matchPrice" value="paid" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Доплата моделі</span></label>
+                  </div>
+                </fieldset>
+                <fieldset class="match-choice-group">
+                  <legend><span class="i-pin icon" aria-hidden="true"></span>Район Львова</legend>
+                  <div class="choice-list district-choices">
+                    <label><input type="checkbox" name="matchDistrict" value="Сихів" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Сихів</span></label>
+                    <label><input type="checkbox" name="matchDistrict" value="Центр" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Центр</span></label>
+                    <label><input type="checkbox" name="matchDistrict" value="Личаківський" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Личаківський</span></label>
+                    <label><input type="checkbox" name="matchDistrict" value="Франківський" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Франківський</span></label>
+                    <label><input type="checkbox" name="matchDistrict" value="Шевченківський" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Шевченківський</span></label>
+                    <label><input type="checkbox" name="matchDistrict" value="Залізничний" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Залізничний</span></label>
+                  </div>
+                </fieldset>
+              </div>
+            </fieldset>
+            <aside class="match-result" data-step="3" hidden aria-live="polite">
+              <div><p class="eyebrow">Ваші параметри</p><h3>Знайшли <strong id="matchCount">0</strong> <span id="matchCountLabel">слотів</span></h3><p id="matchSummary">Оберіть умови — і ми покажемо відповідні пропозиції.</p></div>
+              <button class="button button-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" id="showMatches">Показати слоти <span aria-hidden="true">→</span></button>
+            </aside>
+            <div class="match-controls"><button class="button button-light-outline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" id="matchBack" hidden>← Назад</button><button class="button button-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" id="matchNext">Далі <span aria-hidden="true">→</span></button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="slots" class="section slots-section">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">Актуальні пропозиції</p><h2>Гарячі слоти</h2><p>По одному актуальному слоту від кожного барбера, щоб було з чого обрати без повторів.</p></div>
+        <form class="slots-filter-bar" id="slotsFilter" aria-label="Фільтри слотів">
+          <div class="filter-bar-title"><svg class="icon" aria-hidden="true"><use href="#n-sliders"/></svg><span>Фільтри</span></div>
+          <fieldset class="filter-group filter-price"><legend>Фінансові умови</legend>
+            <label><input type="radio" name="price" value="" checked class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Всі</span></label>
+            <label><input type="radio" name="price" value="free" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Безкоштовно</span></label>
+            <label><input type="radio" name="price" value="supplies" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Розхідники</span></label>
+            <label><input type="radio" name="price" value="paid" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Доплата моделі</span></label>
+          </fieldset>
+          <label class="filter-select sel"><span class="visually-hidden">Район</span><span class="i-pin icon" aria-hidden="true"></span><select name="district" id="filterDistrict" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><option value="">Район</option></select></label>
+          <label class="filter-select sel"><span class="visually-hidden">Дата</span><span class="i-cal icon" aria-hidden="true"></span><select name="date" id="filterDate" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><option value="">Дата</option><option value="0">Сьогодні</option><option value="1">Завтра</option><option value="2">Пт</option></select></label>
+          <label class="filter-select sel"><span class="visually-hidden">Тип волосся</span><span class="i-cut icon" aria-hidden="true"></span><select name="hair" id="filterHair" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><option value="">Тип волосся</option><option value="curly">Кучеряве від 10 см</option><option value="short">Коротке волосся</option><option value="medium">Середнє волосся</option></select></label>
+          <label class="filter-select sel"><span class="visually-hidden">Борода</span><span class="i-beard icon" aria-hidden="true"></span><select name="beard" id="filterBeard" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><option value="">Борода</option><option value="dense">Густа борода</option></select></label>
+          <label class="filter-select sel"><span class="visually-hidden">Рівень майстра</span><svg class="icon" aria-hidden="true"><use href="#n-star"/></svg><select name="level" id="filterLevel" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><option value="">Рівень майстра</option><option value="beginner">Початківець</option></select></label>
+          <button class="button button-quiet filter-reset focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="reset">Скинути</button>
+        </form>
+        <div class="grid-cols-1 slot-grid slots-grid lg:grid-cols-3" id="slotCards" aria-live="polite"></div>
+        <p class="empty-state" id="slotsEmpty" hidden>За цими умовами слотів немає. Спробуй змінити фільтри.</p>
+      </div>
+    </section>
+
+    <section id="barbers" class="scroll-mt-20 bg-creamMuted dark:bg-[#1B3326] py-16 md:py-20" aria-labelledby="barbers-title">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[#805018] dark:text-[#E9B879]">Партнерські барбершопи</p>
+          <h2 id="barbers-title" class="mt-2 font-heading text-3xl font-semibold md:text-4xl">Барбери на мапі</h2>
+          <p class="mt-3 text-textMuted dark:text-[#B8C4BB]">Обери барбершоп у списку — карта покаже, де він знаходиться. <span class="rounded-full bg-accent/20 px-2 py-0.5 text-xs font-semibold text-[#805018] dark:text-[#E9B879]">Демо-адреси</span></p>
+        </div>
+
+        <!-- MEDIA: Google Maps embed. Перемикач барбершопів — radio + peer (без JavaScript). Приховані iframe не завантажуються (loading="lazy"). -->
+        <fieldset class="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-5 lg:grid-rows-3">
+          <legend class="sr-only">Оберіть барбершоп, щоб побачити його на мапі</legend>
+          <input class="peer/s1 sr-only" type="radio" name="shop" id="shop-1" checked>
+          <input class="peer/s2 sr-only" type="radio" name="shop" id="shop-2">
+          <input class="peer/s3 sr-only" type="radio" name="shop" id="shop-3">
+
+          <label class="flex cursor-pointer items-center gap-4 rounded border border-borderWarm dark:border-[#2C4A39] bg-cream dark:bg-[#14261C] p-4 transition-colors duration-200 hover:border-accent peer-checked/s1:border-accent peer-checked/s1:bg-white dark:peer-checked/s1:bg-[#24402F] peer-checked/s1:ring-1 peer-checked/s1:ring-accent peer-focus-visible/s1:ring-2 peer-focus-visible/s1:ring-primary lg:col-span-2" for="shop-1">
+            <img class="h-16 w-16 shrink-0 rounded object-cover" src="assets/images/barbers/andrii-workplace.jpg" alt="Робоче місце Андрія Коваля" width="64" height="64" loading="lazy">
+            <span class="block">
+              <span class="block text-base font-semibold">Barbershop «Сихів Cut»</span>
+              <span class="mt-1 block text-sm text-textMuted dark:text-[#B8C4BB]">вул. Хоткевича, 12 · Сихів</span>
+              <span class="mt-1 block text-sm">Барбер Андрій Коваль</span>
+            </span>
+          </label>
+          <label class="flex cursor-pointer items-center gap-4 rounded border border-borderWarm dark:border-[#2C4A39] bg-cream dark:bg-[#14261C] p-4 transition-colors duration-200 hover:border-accent peer-checked/s2:border-accent peer-checked/s2:bg-white dark:peer-checked/s2:bg-[#24402F] peer-checked/s2:ring-1 peer-checked/s2:ring-accent peer-focus-visible/s2:ring-2 peer-focus-visible/s2:ring-primary lg:col-span-2" for="shop-2">
+            <img class="h-16 w-16 shrink-0 rounded object-cover" src="assets/images/barbers/oleh-workplace.jpg" alt="Робоче місце Олега Мельника" width="64" height="64" loading="lazy">
+            <span class="block">
+              <span class="block text-base font-semibold">Barbershop «Рівень»</span>
+              <span class="mt-1 block text-sm text-textMuted dark:text-[#B8C4BB]">вул. Дорошенка, 24 · Центр</span>
+              <span class="mt-1 block text-sm">Барбер Олег Мельник</span>
+            </span>
+          </label>
+          <label class="flex cursor-pointer items-center gap-4 rounded border border-borderWarm dark:border-[#2C4A39] bg-cream dark:bg-[#14261C] p-4 transition-colors duration-200 hover:border-accent peer-checked/s3:border-accent peer-checked/s3:bg-white dark:peer-checked/s3:bg-[#24402F] peer-checked/s3:ring-1 peer-checked/s3:ring-accent peer-focus-visible/s3:ring-2 peer-focus-visible/s3:ring-primary lg:col-span-2" for="shop-3">
+            <img class="h-16 w-16 shrink-0 rounded object-cover" src="assets/images/barbers/marta-workplace.jpg" alt="Робоче місце Марти Лисенко" width="64" height="64" loading="lazy">
+            <span class="block">
+              <span class="block text-base font-semibold">Студія «Лінія»</span>
+              <span class="mt-1 block text-sm text-textMuted dark:text-[#B8C4BB]">вул. Личаківська, 58 · Личаківський</span>
+              <span class="mt-1 block text-sm">Барберка Марта Лисенко</span>
+            </span>
+          </label>
+
+          <div class="hidden flex-col gap-3 peer-checked/s1:flex lg:col-span-3 lg:col-start-3 lg:row-span-3 lg:row-start-1">
+            <iframe class="aspect-[4/3] w-full flex-1 rounded border border-borderWarm dark:border-[#2C4A39] lg:aspect-auto lg:min-h-[26rem]" title="Мапа: Barbershop «Сихів Cut», вул. Хоткевича, 12, Львів" src="https://maps.google.com/maps?q=%D0%B2%D1%83%D0%BB.+%D0%A5%D0%BE%D1%82%D0%BA%D0%B5%D0%B2%D0%B8%D1%87%D0%B0+12,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="flex flex-col gap-2 sm:flex-row">
+              <a class="inline-flex min-h-11 items-center justify-center rounded bg-primary dark:bg-accent px-4 py-2 text-sm font-semibold text-cream dark:text-darkSurface transition-colors duration-200 hover:bg-darkSurface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2" href="barber.html?id=1">Профіль Андрія</a>
+              <a class="inline-flex min-h-11 items-center justify-center rounded border border-primary dark:border-accent px-4 py-2 text-sm font-semibold text-primary dark:text-[#E9B879] transition-colors duration-200 hover:bg-primary hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%B2%D1%83%D0%BB.+%D0%A5%D0%BE%D1%82%D0%BA%D0%B5%D0%B2%D0%B8%D1%87%D0%B0+12,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2" target="_blank" rel="noopener noreferrer">Прокласти маршрут</a>
+            </div>
+          </div>
+          <div class="hidden flex-col gap-3 peer-checked/s2:flex lg:col-span-3 lg:col-start-3 lg:row-span-3 lg:row-start-1">
+            <iframe class="aspect-[4/3] w-full flex-1 rounded border border-borderWarm dark:border-[#2C4A39] lg:aspect-auto lg:min-h-[26rem]" title="Мапа: Barbershop «Рівень», вул. Дорошенка, 24, Львів" src="https://maps.google.com/maps?q=%D0%B2%D1%83%D0%BB.+%D0%94%D0%BE%D1%80%D0%BE%D1%88%D0%B5%D0%BD%D0%BA%D0%B0+24,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="flex flex-col gap-2 sm:flex-row">
+              <a class="inline-flex min-h-11 items-center justify-center rounded bg-primary dark:bg-accent px-4 py-2 text-sm font-semibold text-cream dark:text-darkSurface transition-colors duration-200 hover:bg-darkSurface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2" href="barber.html?id=2">Профіль Олега</a>
+              <a class="inline-flex min-h-11 items-center justify-center rounded border border-primary dark:border-accent px-4 py-2 text-sm font-semibold text-primary dark:text-[#E9B879] transition-colors duration-200 hover:bg-primary hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%B2%D1%83%D0%BB.+%D0%94%D0%BE%D1%80%D0%BE%D1%88%D0%B5%D0%BD%D0%BA%D0%B0+24,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2" target="_blank" rel="noopener noreferrer">Прокласти маршрут</a>
+            </div>
+          </div>
+          <div class="hidden flex-col gap-3 peer-checked/s3:flex lg:col-span-3 lg:col-start-3 lg:row-span-3 lg:row-start-1">
+            <iframe class="aspect-[4/3] w-full flex-1 rounded border border-borderWarm dark:border-[#2C4A39] lg:aspect-auto lg:min-h-[26rem]" title="Мапа: Студія «Лінія», вул. Личаківська, 58, Львів" src="https://maps.google.com/maps?q=%D0%B2%D1%83%D0%BB.+%D0%9B%D0%B8%D1%87%D0%B0%D0%BA%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+58,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="flex flex-col gap-2 sm:flex-row">
+              <a class="inline-flex min-h-11 items-center justify-center rounded bg-primary dark:bg-accent px-4 py-2 text-sm font-semibold text-cream dark:text-darkSurface transition-colors duration-200 hover:bg-darkSurface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2" href="barber.html?id=3">Профіль Марти</a>
+              <a class="inline-flex min-h-11 items-center justify-center rounded border border-primary dark:border-accent px-4 py-2 text-sm font-semibold text-primary dark:text-[#E9B879] transition-colors duration-200 hover:bg-primary hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%B2%D1%83%D0%BB.+%D0%9B%D0%B8%D1%87%D0%B0%D0%BA%D1%96%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+58,+%D0%9B%D1%8C%D0%B2%D1%96%D0%B2" target="_blank" rel="noopener noreferrer">Прокласти маршрут</a>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </section>
+
+    <section id="join" class="join-section section">
+      <div class="container join-layout">
+        <div class="join-copy"><p class="eyebrow">Почни з простого</p><h2>Створити акаунт</h2><p>Один раз підтверди номер — і ми нагадаємо про запис за 24 та 2 години.</p></div>
+        <form id="regForm" class="reg-form" aria-label="Реєстрація нового користувача" novalidate>
+          <fieldset class="form-role-group"><legend>Я приєднуюся як</legend><label for="accountRoleModel"><input id="accountRoleModel" type="radio" name="accountRole" value="model" checked class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Модель</span></label><label for="accountRoleBarber"><input id="accountRoleBarber" type="radio" name="accountRole" value="barber" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Барбер</span></label></fieldset>
+          <div class="form-field [&>*]:min-w-0"><label for="regName">Ім’я</label><input id="regName" name="name" type="text" autocomplete="name" minlength="2" required aria-describedby="nameMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><p class="form-message" id="nameMessage" aria-live="polite"></p></div>
+          <div class="form-field [&>*]:min-w-0"><label for="regPhone">Телефон</label><div class="input-action-row"><input id="regPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 XX XXX XX XX" required aria-describedby="phoneMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><button class="button button-outline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" id="sendOtp" type="button">Надіслати код</button></div><p class="form-message" id="phoneMessage" aria-live="polite">Формат: +380 XX XXX XX XX</p></div>
+          <div class="form-field [&>*]:min-w-0"><label for="regOtp">Код OTP</label><input id="regOtp" name="otp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="4" pattern="[0-9]{4}" placeholder="4 цифри" required aria-describedby="otpMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><p class="form-message" id="otpMessage" aria-live="polite"></p></div>
+          <div class="form-field [&>*]:min-w-0"><label for="regDistrict">Район Львова</label><select id="regDistrict" name="district" required aria-describedby="districtMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><option value="">Оберіть район</option></select><p class="form-message" id="districtMessage" aria-live="polite"></p></div>
+          <div class="form-field [&>*]:min-w-0"><label for="regHair" id="regHairLabel">Тип волосся</label><select id="regHair" name="hair" required aria-describedby="hairMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><option value="">Оберіть варіант</option><option value="short">Коротке</option><option value="medium">Середнє</option><option value="long">Довге</option><option value="curly">Кучеряве</option><option value="beard">Густа борода</option></select><p class="form-message" id="hairMessage" aria-live="polite"></p></div>
+          <label class="consent-field" for="regConsent"><input id="regConsent" name="consent" type="checkbox" required aria-describedby="consentMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Погоджуюсь із правилами платформи й нагадуваннями про запис</span></label>
+          <p class="form-message" id="consentMessage" aria-live="polite"></p><p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          <button class="button button-primary submit-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="submit">Створити акаунт</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pb-8 pt-12 text-[#E2D9C8] bg-darkSurface border-t border-white/10">
+    <div class="grid grid-cols-1 gap-8 max-w-7xl mb-10 mx-auto px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <div>
+        <a class="inline-flex items-center gap-2 mb-4 text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html">
+          <img class="brand-mark h-9 w-auto" src="assets/images/logo.png" alt="" width="227" height="191">
+          <span class="font-heading font-semibold text-xl">BarberMatch Lviv</span>
+        </a>
+        <p class="max-w-xs mb-4 leading-relaxed text-sm text-white/70">Локальний P2P-маркетплейс, що поєднує барберів-початківців і моделей у Львові.</p>
+        <span class="inline-flex px-3 py-1.5 font-medium text-[#E9B879] text-xs bg-accent/15 border border-accent/40 rounded-full">0 ₴ комісії · Розрахунок на місці</span>
+      </div>
+      <nav aria-label="Посилання для моделей і барберів">
+        <h2 class="mb-4 font-heading font-semibold text-cream text-xl">Навігація</h2>
+        <ul class="space-y-3 text-sm">
+          <li><a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#slots">Вільні слоти</a></li>
+          <li><a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#match">Підібрати стрижку</a></li>
+          <li><a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#barbers">Барбери на мапі</a></li>
+          <li><a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="barber.html">Профіль барбера</a></li>
+          <li><a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="create.html">Створити заявку на модель</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Перехід за районами Львова">
+        <h2 class="mb-4 font-heading font-semibold text-cream text-xl">Райони Львова</h2>
+        <ul class="flex flex-wrap gap-2">
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#slots" data-district="Сихів">Сихів</a></li>
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#slots" data-district="Центр">Центр</a></li>
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#slots" data-district="Личаківський">Личаків</a></li>
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#slots" data-district="Франківський">Франківський</a></li>
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#slots" data-district="Шевченківський">Шевченківський</a></li>
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#slots" data-district="Залізничний">Залізничний</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="mb-4 font-heading font-semibold text-cream text-xl">Безпека та підтримка</h2>
+        <p class="mb-3 leading-relaxed text-sm text-white/70">Нагадуємо про запис за 24 і 2 години, щоб зменшити кількість неявок.</p>
+        <address class="not-italic text-sm">
+          <a class="block transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="mailto:hello@barbermatch.lviv">hello@barbermatch.lviv</a>
+          <a class="inline-block mt-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="https://t.me/">Telegram-підтримка</a>
+        </address>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-between gap-4 max-w-7xl mx-auto pt-6 px-4 text-center text-white/60 text-xs border-t border-white/10 sm:flex-row sm:px-6 sm:text-left lg:px-8">
+      <p>© 2026 BarberMatch Lviv. Усі права захищено</p>
+      <a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="#join">Правила платформи та конфіденційність</a>
+    </div>
+  </footer>
+</body>
+</html>

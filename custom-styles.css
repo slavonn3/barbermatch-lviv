@@ -1,0 +1,625 @@
+html {
+  scrollbar-color: #1D442F #F9F3E8;
+  scrollbar-width: thin;
+}
+
+.brand-mark {
+  object-fit: contain;
+}
+
+.mobile-menu-panel {
+  background-color: #F0E7D4;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F9F3E8;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #F9F3E8;
+  border-radius: 999px;
+  background: #1D442F;
+}
+
+.hero-backdrop {
+  background-image:
+    linear-gradient(90deg, #14261C 0%, rgb(20 38 28 / 76%) 48%, transparent 100%),
+    url("assets/images/hero_bg.webp");
+}
+
+@media (min-width: 1024px) {
+  .hero-layout {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .hero-copy {
+    grid-column: span 7;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-copy {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 639.98px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-actions > .button {
+    width: 100%;
+  }
+
+  #slotCards,
+  #sl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  #slotCards,
+  #sl {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.i-cut,
+.i-beard,
+.i-cal,
+.i-pin,
+.i-match {
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.i-cut {
+  -webkit-mask-image: url("assets/icons/i-cut.png");
+  mask-image: url("assets/icons/i-cut.png");
+}
+
+.i-beard {
+  -webkit-mask-image: url("assets/icons/i-beard.png");
+  mask-image: url("assets/icons/i-beard.png");
+}
+
+.i-cal {
+  -webkit-mask-image: url("assets/icons/i-cal.png");
+  mask-image: url("assets/icons/i-cal.png");
+}
+
+.i-pin {
+  -webkit-mask-image: url("assets/icons/i-pin.png");
+  mask-image: url("assets/icons/i-pin.png");
+}
+
+.i-match {
+  -webkit-mask-image: url("assets/icons/i-match.png");
+  mask-image: url("assets/icons/i-match.png");
+}
+
+.ba-compare {
+  --pos: 50%;
+}
+
+/* «До» більше не звужується (це сплющило б фото): шар на всю ширину,
+   а видиму частину відсікає clip-path — рухається тільки межа */
+.ba-before {
+  right: 0;
+  width: 100%;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  transition: clip-path 120ms ease-out;
+}
+
+.ba-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center var(--focus, 40%);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Для справжніх фото фіксованих 208px замало — кадр 4:3, як у самих фото, без обрізання */
+.slot-before-after:has(.has-photos),
+.work-comparison {
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+}
+
+.ba-compare.has-photos .ba-badge-before,
+.ba-compare.has-photos .ba-badge-after {
+  box-shadow: 0 2px 8px rgb(20 38 28 / 35%);
+}
+
+/* Фото в галереї профілю, мініатюрах та аватарах */
+.portrait-illustration.has-photo {
+  overflow: hidden;
+}
+
+.thumb.has-photo,
+.other-barber-avatar.has-photo {
+  position: relative;
+  overflow: hidden;
+}
+
+.portrait-illustration.has-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb.has-photo {
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.thumb.has-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb.has-photo > span {
+  position: relative;
+  width: 100%;
+  padding: 4px 6px;
+  background: linear-gradient(transparent, rgb(20 38 28 / 85%));
+  color: #F9F3E8;
+  font-weight: var(--font-weight-semibold);
+}
+
+.other-barber-avatar.has-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ba-divider {
+  left: var(--pos);
+  transition: left 120ms ease-out;
+}
+
+.ba-range {
+  cursor: ew-resize;
+  touch-action: pan-y;
+}
+
+.ba-compare:focus-within .ba-handle {
+  outline: 3px solid #C87D32;
+  outline-offset: 3px;
+}
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid #C87D32 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgb(200 125 50 / 35%) !important;
+}
+
+.review-filters .sel {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+}
+
+.review-filters .sel select {
+  min-width: 0;
+}
+
+@media (max-width: 1279.98px) {
+  #mobileMenu {
+    max-height: 0;
+  }
+
+  #mobileMenu[data-mobile-menu-open="true"] {
+    max-height: 32rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .review-filters .sel {
+    flex: 1 1 0;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-backdrop {
+    background-image:
+      linear-gradient(90deg, #14261C 0%, rgb(20 38 28 / 82%) 55%, rgb(20 38 28 / 22%) 100%),
+      url("assets/images/hero_bg.webp");
+    background-position: 75% 85%;
+  }
+}
+
+/* Tailwind Preflight підключається після style.css і скидає розмір та насиченість
+   заголовків до font-size: inherit. Повертаємо типографіку дизайн-системи
+   (специфічність main h2 вища за h2 з Preflight, але нижча за Tailwind-класи). */
+main h1,
+main h2,
+main h3 {
+  font-weight: var(--font-weight-semibold);
+}
+
+main h2 {
+  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-3xl));
+  line-height: var(--line-height-heading);
+}
+
+main h3 {
+  font-size: var(--text-2xl);
+  line-height: 1.2;
+}
+
+/* ---------- Темна тема: шапка та мобільне меню ---------- */
+[data-theme="dark"] body > header {
+  border-color: rgb(249 243 232 / 14%);
+  background-color: rgb(20 38 28 / 96%);
+  color: #F9F3E8;
+}
+
+[data-theme="dark"] body > header .text-textMain,
+[data-theme="dark"] body > header .mobile-menu-panel a,
+[data-theme="dark"] body > header .mobile-menu-panel button:not([data-role][aria-pressed="true"]) {
+  color: #F9F3E8;
+}
+
+[data-theme="dark"] body > header a:hover,
+[data-theme="dark"] body > header button:not([data-role][aria-pressed="true"]):hover {
+  color: #E9B879;
+}
+
+[data-theme="dark"] body > header .mobile-menu-panel {
+  border-color: rgb(249 243 232 / 14%);
+  background-color: #1B3325;
+}
+
+[data-theme="dark"] body > header [role="group"],
+[data-theme="dark"] #mobileMenuBtn {
+  border-color: rgb(249 243 232 / 22%);
+  background-color: rgb(249 243 232 / 6%);
+}
+
+[data-theme="dark"] body > header .hover\:bg-creamMuted:hover {
+  background-color: rgb(249 243 232 / 10%);
+}
+
+[data-theme="dark"] body > header [data-role][aria-pressed="true"] {
+  background-color: #C87D32;
+  color: #14261C;
+}
+
+/* ---------- Темна тема: текст, що використовував --color-primary ---------- */
+[data-theme="dark"] .reliability strong,
+[data-theme="dark"] .reliability-value,
+[data-theme="dark"] .profile-statistics dd,
+[data-theme="dark"] .review-average {
+  color: #E9B879;
+}
+
+[data-theme="dark"] .ba-badge-before,
+[data-theme="dark"] .portrait-verified {
+  background: #F9F3E8;
+  color: #14261C;
+}
+
+[data-theme="dark"] .ba-divider,
+[data-theme="dark"] .ba-handle {
+  background: #F9F3E8;
+  color: #1D442F;
+}
+
+[data-theme="dark"] .tag-list li,
+[data-theme="dark"] .tag-list span {
+  background: rgb(249 243 232 / 12%);
+}
+
+/* Логотип темний на прозорому фоні — у темній шапці даємо йому кремову підкладку */
+[data-theme="dark"] body > header .brand-mark {
+  padding: 2px;
+  border-radius: 8px;
+  background: #F9F3E8;
+}
+
+[data-theme="dark"] .status-badge {
+  color: #17402A;
+}
+
+[data-theme="dark"] .visit-verified,
+[data-theme="dark"] .verified-label .icon,
+[data-theme="dark"] .form-message.is-success {
+  color: #9BD3AE;
+}
+
+[data-theme="dark"] .form-message,
+[data-theme="dark"] .form-status.is-error {
+  color: #FFB4A6;
+}
+
+[data-theme="dark"] .button-outline {
+  border-color: rgb(249 243 232 / 55%);
+  color: #F9F3E8;
+}
+
+[data-theme="dark"] .button-outline:hover:not(:disabled) {
+  border-color: #F9F3E8;
+  background: #F9F3E8;
+  color: #14261C;
+}
+
+/* ---------- Підсвічування карток при наведенні ----------
+   Та сама мова, що й у картках-варіантах на create.html: бурштинова рамка,
+   м’яке кільце й легкий підйом. Картки не клікабельні, тому курсор не змінюємо. */
+.feature-card,
+.audience-card,
+.profile-hero .profile-statistics div,
+.profile-hero .profile-fact,
+.profile-hero .reliability-card {
+  transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease, transform 200ms ease;
+}
+
+.feature-card:hover {
+  border-color: #C87D32;
+  box-shadow: 0 0 0 1px rgb(200 125 50 / 45%), 0 10px 24px rgb(20 38 28 / 10%);
+  transform: translateY(-2px);
+}
+
+.feature-icon-box {
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.feature-card:hover .feature-icon-box {
+  background: rgb(200 125 50 / 14%);
+  color: #805018;
+}
+
+.audience-card:hover {
+  border-color: #C87D32;
+  background: rgb(249 243 232 / 8%);
+  box-shadow: 0 0 0 1px rgb(200 125 50 / 40%);
+  transform: translateY(-2px);
+}
+
+/* Плитки з інформацією про барбера в темній hero-смузі */
+.profile-hero .profile-statistics div:hover,
+.profile-hero .profile-fact:hover {
+  border-color: rgb(200 125 50 / 75%);
+  background: rgb(249 243 232 / 10%);
+  box-shadow: 0 0 0 1px rgb(200 125 50 / 35%);
+  transform: translateY(-2px);
+}
+
+.profile-hero .profile-statistics div:hover dd {
+  color: #E9B879;
+}
+
+.profile-hero .reliability-card:hover {
+  border-color: #C87D32;
+  box-shadow: 0 0 0 2px rgb(200 125 50 / 45%), var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .feature-card:hover .feature-icon-box {
+  color: #E9B879;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-card:hover,
+  .audience-card:hover,
+  .profile-hero .profile-statistics div:hover,
+  .profile-hero .profile-fact:hover,
+  .profile-hero .reliability-card:hover {
+    transform: none;
+  }
+}
+
+/* ---------- Профіль барбера: темна hero-смуга як на головній ---------- */
+.profile-hero-backdrop {
+  background-image:
+    linear-gradient(90deg, #14261C 0%, rgb(20 38 28 / 94%) 50%, rgb(20 38 28 / 78%) 100%),
+    url("assets/images/hero_bg.webp");
+  background-position: center 65%;
+  background-size: cover;
+}
+
+.profile-hero .profile-section {
+  padding-top: 20px;
+  padding-bottom: clamp(48px, 6vw, 80px);
+}
+
+.profile-hero .breadcrumb ol {
+  color: rgb(249 243 232 / 70%);
+}
+
+.profile-hero .breadcrumb li[aria-current] {
+  color: #F9F3E8;
+  font-weight: var(--font-weight-semibold);
+}
+
+.profile-hero .breadcrumb li:not(:last-child)::after {
+  color: rgb(249 243 232 / 40%);
+}
+
+.profile-hero .breadcrumb a:hover {
+  color: #E9B879;
+}
+
+.profile-hero h1 {
+  color: #F9F3E8;
+}
+
+.profile-hero .eyebrow {
+  color: #E9B879;
+}
+
+.profile-hero .status-badge {
+  border: 1px solid rgb(249 243 232 / 22%);
+  background: rgb(249 243 232 / 10%);
+  color: #F9F3E8;
+}
+
+.profile-hero .profile-portrait {
+  box-shadow: 0 0 0 1px rgb(249 243 232 / 16%), var(--shadow-md);
+}
+
+.profile-hero .reliability-card {
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+
+/* Лічильники та факти — «скляні» плитки, як hero-metrics на головній */
+.profile-hero .profile-statistics div,
+.profile-hero .profile-fact {
+  border-color: rgb(249 243 232 / 16%);
+  background: rgb(249 243 232 / 6%);
+}
+
+.profile-hero .profile-statistics dd {
+  color: #F9F3E8;
+}
+
+.profile-hero .profile-statistics dt,
+.profile-hero .profile-fact dt,
+.profile-hero .profile-fact dd small {
+  color: rgb(249 243 232 / 72%);
+}
+
+.profile-hero .profile-fact dd {
+  color: #F9F3E8;
+}
+
+.profile-hero .profile-fact dt > .icon,
+.profile-hero .profile-fact dt > .i-cut,
+.profile-hero .profile-fact dt > .i-pin,
+.profile-hero .profile-fact dt > .i-cal {
+  color: #E9B879;
+}
+
+.profile-hero .breadcrumb-back {
+  gap: 8px;
+}
+
+.profile-hero .button-outline {
+  border-color: rgb(249 243 232 / 55%);
+  color: #F9F3E8;
+}
+
+.profile-hero .button-outline:hover:not(:disabled) {
+  border-color: #F9F3E8;
+  background: #F9F3E8;
+  color: #14261C;
+}
+
+.profile-hero .thumb {
+  border-color: rgb(249 243 232 / 16%);
+  background: rgb(249 243 232 / 6%);
+  color: #F9F3E8;
+}
+
+.profile-hero .thumb > .icon,
+.profile-hero .thumb > .i-cut,
+.profile-hero .thumb > .i-beard,
+.profile-hero .thumb-initials {
+  color: #E9B879;
+}
+
+.profile-hero .thumb:hover {
+  border-color: rgb(249 243 232 / 45%);
+}
+
+.profile-hero .thumb.on {
+  border-color: #C87D32;
+  background: rgb(200 125 50 / 16%);
+}
+
+/* «Про себе» та зведення відгуків — темно-зелені панелі, як «Чому ми» */
+body[data-page="barber"] .about-card,
+body[data-page="barber"] .review-summary {
+  border-color: transparent;
+  background: #1D442F;
+  color: #F9F3E8;
+}
+
+body[data-page="barber"] .about-card > p {
+  color: rgb(249 243 232 / 88%);
+}
+
+body[data-page="barber"] .about-card h3 {
+  color: #E9B879;
+}
+
+body[data-page="barber"] .about-card .tag-list li {
+  border: 1px solid rgb(249 243 232 / 20%);
+  background: rgb(249 243 232 / 8%);
+  color: #F9F3E8;
+}
+
+body[data-page="barber"] .review-average,
+body[data-page="barber"] .review-summary .review-stars {
+  color: #E9B879;
+}
+
+body[data-page="barber"] .review-summary #avgN,
+body[data-page="barber"] .review-summary .review-note {
+  color: rgb(249 243 232 / 72%);
+}
+
+body[data-page="barber"] .review-summary li {
+  color: #F9F3E8;
+}
+
+body[data-page="barber"] .review-summary .rating-track {
+  background: rgb(249 243 232 / 16%);
+}
+
+@media (max-width: 639.98px) {
+  .profile-hero .profile-portrait {
+    aspect-ratio: 4 / 3;
+  }
+
+  .profile-hero .reliability-card {
+    max-width: none;
+  }
+}
+
+/* style.css зменшував кнопки профілю до 40px — повертаємо мінімум 44px для тач-цілей */
+body[data-page="barber"] .button {
+  min-height: 44px;
+}
+
+[data-theme="dark"] body[data-page="barber"] .about-card,
+[data-theme="dark"] body[data-page="barber"] .review-summary {
+  box-shadow: 0 0 0 1px rgb(249 243 232 / 14%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main-nav,
+  #mobileMenu,
+  .ba-before,
+  .ba-divider {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Створіть заявку на модель у BarberMatch Lviv: оберіть послугу, дні та час, умови для моделі й опублікуйте вільні слоти без комісій.">
+  <title>Нова заявка на модель | BarberMatch Lviv</title>
+  <script>try { if (localStorage.getItem('barbermatch-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) { /* без сховища — світла тема */ }</script>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1D442F',
+            darkSurface: '#14261C',
+            accent: '#C87D32',
+            accentHover: '#DF8E3C',
+            cream: '#F9F3E8',
+            creamMuted: '#EFE6D5',
+            borderWarm: '#D6CBB8',
+            textMain: '#18221D',
+            textMuted: '#5A655E',
+            success: '#2E7D32',
+            warning: '#ED6C02',
+            danger: '#D32F2F'
+          },
+          fontFamily: {
+            heading: ['"Crimson Text"', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="custom-styles.css">
+  <link rel="stylesheet" href="create.css">
+  <script src="js/app.js" defer></script>
+  <script src="create.js" defer></script>
+</head>
+<body class="overflow-x-hidden font-sans" data-page="create">
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="n-tag" viewBox="0 0 24 24"><path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L3 13V3h10l7.6 7.6a2 2 0 010 2.8z"/><circle cx="7.5" cy="7.5" r="1.3"/></symbol>
+      <symbol id="n-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+      <symbol id="n-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></symbol>
+      <symbol id="n-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0112 0v5l1.5 2h-15z"/><path d="M10 21h4"/></symbol>
+      <symbol id="n-cash" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="2"/><circle cx="12" cy="12" r="2.3"/><path d="M6.5 12h.01M17.5 12h.01"/></symbol>
+      <symbol id="n-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></symbol>
+      <symbol id="n-swap" viewBox="0 0 24 24"><path d="M8 4L4 8l4 4M4 8h16M16 20l4-4-4-4M20 16H4"/></symbol>
+      <symbol id="n-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+      <symbol id="n-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+      <symbol id="n-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+      <symbol id="n-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+      <symbol id="n-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="sticky top-0 z-50 text-textMain backdrop-blur-md bg-[#F0E7D4] border-b border-borderWarm">
+    <div class="flex items-center justify-between gap-4 h-16 max-w-7xl mx-auto px-4 sm:px-6 md:h-20 lg:px-8">
+      <a class="flex items-center shrink-0 gap-2 text-textMain focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html" aria-label="BarberMatch Lviv — головна">
+        <img class="brand-mark h-12 w-auto md:h-14" src="assets/images/logo.png" alt="">
+        <span class="font-heading font-semibold text-xl tracking-tight md:text-2xl">BarberMatch</span>
+        <span class="px-2 py-0.5 text-accent text-xs bg-accent/20 border border-accent/40 rounded-full">Львів</span>
+      </a>
+      <nav class="hidden items-center gap-6 whitespace-nowrap xl:flex" aria-label="Основна навігація">
+        <a class="text-textMain text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#slots">Вільні слоти</a>
+        <a class="text-textMain text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#why">Переваги</a>
+        <a class="text-textMain text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#match">Швидкий підбір</a>
+        <a class="text-textMain text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="barber.html">Профіль барбера</a>
+        <a class="text-textMain text-sm font-semibold underline decoration-accent decoration-2 underline-offset-8 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="create.html" aria-current="page">Створити заявку</a>
+      </nav>
+      <div class="hidden items-center shrink-0 gap-3 xl:flex">
+        <div class="flex items-center p-1 bg-white/70 border border-borderWarm rounded-full" role="group" aria-label="Ваша роль">
+          <button class="px-3 py-2 font-semibold text-textMain text-xs rounded-full transition-colors hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" data-role="model" aria-pressed="false">Шукаю стрижку</button>
+          <button class="px-3 py-2 font-semibold text-cream text-xs bg-primary rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" data-role="barber" aria-pressed="true">Шукаю модель</button>
+        </div>
+      </div>
+      <button class="theme-toggle focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" aria-label="Увімкнути темну тему" title="Увімкнути темну тему"><span aria-hidden="true">🌙</span></button>
+      <button class="px-3 py-2 text-textMain text-xl border border-borderWarm rounded-md transition-colors hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:hidden" id="mobileMenuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Відкрити меню">
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+    <div class="mobile-menu-panel absolute left-0 overflow-hidden pointer-events-none right-0 top-full -translate-y-2 max-h-0 border-b border-borderWarm opacity-0 shadow-xl duration-200 transition-all xl:hidden" id="mobileMenu" aria-hidden="true">
+      <nav class="grid gap-1 max-w-7xl mx-auto px-4 py-4 sm:px-6" aria-label="Мобільна навігація">
+        <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html#slots">Вільні слоти</a>
+        <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html#why">Переваги</a>
+        <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html#match">Швидкий підбір</a>
+        <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="barber.html">Профіль барбера</a>
+        <a class="px-3 py-3 text-textMain text-sm font-semibold rounded bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="create.html" aria-current="page">Створити заявку</a>
+        <div class="flex items-stretch gap-2 px-3 py-3 border-t border-borderWarm" role="group" aria-label="Ваша роль">
+          <button class="inline-flex flex-1 items-center justify-center px-3 py-2 min-h-10 font-semibold text-textMain text-sm text-center leading-tight border border-borderWarm rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" data-role="model" aria-pressed="false">Шукаю стрижку</button>
+          <button class="inline-flex flex-1 items-center justify-center px-3 py-2 min-h-10 font-semibold text-cream text-sm text-center leading-tight bg-primary rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="button" data-role="barber" aria-pressed="true">Шукаю модель</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero-смуга: та сама мова, що й hero на головній -->
+    <section class="relative overflow-hidden bg-darkSurface text-cream" aria-labelledby="page-title">
+      <div class="create-hero-backdrop absolute inset-0" aria-hidden="true"></div>
+      <div class="relative max-w-7xl mx-auto px-4 pb-10 pt-6 sm:px-6 md:pb-14 lg:px-8">
+        <nav aria-label="Хлібні крихти">
+          <ol class="flex flex-wrap items-center gap-2 text-sm text-white/70">
+            <li><a class="rounded transition-colors hover:text-accentHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html">Головна</a></li>
+            <li aria-hidden="true">›</li>
+            <li class="font-semibold text-cream" aria-current="page">Нова заявка на модель</li>
+          </ol>
+        </nav>
+
+        <p class="inline-flex items-center gap-2 mt-8 px-4 py-1 text-sm font-semibold text-accent border border-accent rounded-full">Для барберів · 0 ₴ комісії</p>
+        <h1 id="page-title" class="mt-4 max-w-3xl font-heading text-4xl font-semibold leading-tight text-cream sm:text-5xl">Нова заявка на <em class="font-normal text-accent">модель</em></h1>
+        <p class="max-w-2xl mt-4 text-base leading-relaxed text-white/75 md:text-lg">Опишіть, кого шукаєте, позначте дні й години прийому та умови. Праворуч одразу видно картку слоту — саме так її побачить модель у каталозі.</p>
+
+        <ol class="cr-stepper grid grid-cols-4 gap-2 max-w-3xl mt-8 sm:gap-3" id="stepper" aria-label="Кроки створення заявки">
+          <li><button type="button" class="cr-step-btn" data-goto="0"><span class="cr-step-bar" aria-hidden="true"></span><span class="cr-step-num" aria-hidden="true">1</span><span class="cr-step-label">Послуга</span></button></li>
+          <li><button type="button" class="cr-step-btn" data-goto="1"><span class="cr-step-bar" aria-hidden="true"></span><span class="cr-step-num" aria-hidden="true">2</span><span class="cr-step-label">Дата й час</span></button></li>
+          <li><button type="button" class="cr-step-btn" data-goto="2"><span class="cr-step-bar" aria-hidden="true"></span><span class="cr-step-num" aria-hidden="true">3</span><span class="cr-step-label">Місце й умови</span></button></li>
+          <li><button type="button" class="cr-step-btn" data-goto="3"><span class="cr-step-bar" aria-hidden="true"></span><span class="cr-step-num" aria-hidden="true">4</span><span class="cr-step-label">Контакти</span></button></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="py-8 md:py-12" aria-label="Конструктор заявки">
+      <div class="grid items-start gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(320px,380px)] lg:px-8 xl:gap-12">
+
+        <form id="request-form" class="min-w-0 scroll-mt-28 bg-white border border-borderWarm rounded-lg shadow-sm dark:bg-primary dark:border-white/15" novalidate autocomplete="off">
+          <div class="flex flex-wrap items-center justify-between gap-3 px-5 pt-5 sm:px-8 sm:pt-7">
+            <p class="text-sm font-medium text-textMuted dark:text-white/70" aria-live="polite">Крок <span id="step-num">1</span> з 4 · <span id="step-name">Послуга</span></p>
+            <div class="flex items-center gap-1">
+              <a class="inline-flex min-h-[44px] items-center gap-1.5 px-3 text-sm font-semibold text-primary rounded-md transition-colors hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:text-cream dark:hover:bg-white/10 lg:hidden" href="#preview"><svg class="icon" aria-hidden="true"><use href="#n-eye"/></svg>Прев’ю</a>
+              <button type="button" id="reset-btn" class="inline-flex min-h-[44px] items-center px-3 text-sm font-medium text-textMuted rounded-md transition-colors hover:bg-creamMuted hover:text-danger focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-[#FFB4A6]">Очистити</button>
+            </div>
+          </div>
+
+          <div class="px-5 pb-6 pt-4 sm:px-8 sm:pb-8">
+            <!-- КРОК 1 -->
+            <section class="cr-step" data-step="0" aria-labelledby="s1-title">
+              <h2 id="s1-title" class="font-heading text-2xl font-semibold text-primary sm:text-3xl dark:text-cream" tabindex="-1">Що ви пропонуєте</h2>
+              <p class="mt-1 text-sm text-textMuted dark:text-white/70">Модель має одразу зрозуміти, яку роботу ви відпрацьовуєте і чи підходить вона за типом волосся.</p>
+
+              <fieldset class="mt-6" aria-describedby="err-serviceType">
+                <legend class="cr-label">Тип послуги</legend>
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                  <label class="cr-option"><input type="radio" name="serviceType" value="Стрижка"><span class="cr-option-icon"><span class="icon i-cut" aria-hidden="true"></span></span><span class="cr-option-title">Стрижка</span><span class="cr-option-text">Машинка, ножиці, фейд</span></label>
+                  <label class="cr-option"><input type="radio" name="serviceType" value="Борода"><span class="cr-option-icon"><span class="icon i-beard" aria-hidden="true"></span></span><span class="cr-option-title">Борода</span><span class="cr-option-text">Форма, контур, догляд</span></label>
+                  <label class="cr-option"><input type="radio" name="serviceType" value="Комплекс"><span class="cr-option-icon"><span class="icon i-cut" aria-hidden="true"></span><span class="icon i-beard" aria-hidden="true"></span></span><span class="cr-option-title">Комплекс</span><span class="cr-option-text">Стрижка + борода</span></label>
+                </div>
+                <p class="cr-error" id="err-serviceType" hidden></p>
+              </fieldset>
+
+              <div class="grid grid-cols-1 gap-x-5 mt-6 sm:grid-cols-2">
+                <div class="cr-field">
+                  <label class="cr-label" for="service">Що саме відпрацьовуєте</label>
+                  <select class="cr-input" id="service" name="service" aria-describedby="err-service">
+                    <option value="">Оберіть зі списку</option>
+                    <option>Класична стрижка</option>
+                    <option>Фейд</option>
+                    <option>Текстурна стрижка</option>
+                    <option>Стрижка на кучерях</option>
+                    <option>Оформлення бороди</option>
+                    <option>Стрижка + борода</option>
+                    <option>Новий образ під ключ</option>
+                  </select>
+                  <p class="cr-error" id="err-service" hidden></p>
+                </div>
+                <div class="cr-field">
+                  <label class="cr-label" for="ref">Референс <span class="cr-opt">необов’язково</span></label>
+                  <input class="cr-input" id="ref" name="ref" type="url" inputmode="url" placeholder="https://instagram.com/p/…" aria-describedby="err-ref">
+                  <p class="cr-error" id="err-ref" hidden></p>
+                </div>
+              </div>
+
+              <div class="cr-field">
+                <label class="cr-label" for="desc">Опис роботи</label>
+                <textarea class="cr-input" id="desc" name="desc" rows="4" maxlength="400" aria-describedby="desc-hint err-desc" placeholder="Наприклад: low fade з текстурною верхівкою, потрібне волосся від 6 см. Хочу відпрацювати перехід біля скронь."></textarea>
+                <div class="flex items-start justify-between gap-3 mt-1.5">
+                  <p class="cr-error !mt-0" id="err-desc" hidden></p>
+                  <p class="ml-auto text-xs text-textMuted dark:text-white/60" id="desc-hint"><span id="desc-count">0</span> / 400 · мінімум 20 символів</p>
+                </div>
+              </div>
+
+              <fieldset class="mt-6">
+                <legend class="cr-label">Довжина волосся моделі</legend>
+                <div class="flex flex-wrap gap-2">
+                  <label class="cr-chip"><input type="radio" name="hair" value="Коротке волосся"><span>Коротке</span></label>
+                  <label class="cr-chip"><input type="radio" name="hair" value="Середнє волосся"><span>Середнє</span></label>
+                  <label class="cr-chip"><input type="radio" name="hair" value="Довге волосся"><span>Довге</span></label>
+                  <label class="cr-chip"><input type="radio" name="hair" value="Кучеряве волосся від 10 см"><span>Кучеряве від 10 см</span></label>
+                  <label class="cr-chip"><input type="radio" name="hair" value="" checked><span>Будь-яке</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="mt-6">
+                <legend class="cr-label">Борода моделі</legend>
+                <div class="flex flex-wrap gap-2">
+                  <label class="cr-chip"><input type="radio" name="beard" value="" checked><span>Не важливо</span></label>
+                  <label class="cr-chip"><input type="radio" name="beard" value="Щетина"><span>Щетина</span></label>
+                  <label class="cr-chip"><input type="radio" name="beard" value="Борода"><span>Середня борода</span></label>
+                  <label class="cr-chip"><input type="radio" name="beard" value="Густа борода"><span>Густа борода</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="mt-6">
+                <legend class="cr-label">Що просимо в моделі</legend>
+                <div class="flex flex-wrap gap-2">
+                  <label class="cr-chip"><input type="checkbox" name="ask" value="Фото до/після" checked><span><svg class="icon cr-chip-check" aria-hidden="true"><use href="#n-check"/></svg>Фото до/після</span></label>
+                  <label class="cr-chip"><input type="checkbox" name="ask" value="Відео процесу"><span><svg class="icon cr-chip-check" aria-hidden="true"><use href="#n-check"/></svg>Відео процесу</span></label>
+                  <label class="cr-chip"><input type="checkbox" name="ask" value="Згода на фарбування"><span><svg class="icon cr-chip-check" aria-hidden="true"><use href="#n-check"/></svg>Згода на фарбування</span></label>
+                  <label class="cr-chip"><input type="checkbox" name="ask" value="Новий образ"><span><svg class="icon cr-chip-check" aria-hidden="true"><use href="#n-check"/></svg>Готовий до зміни образу</span></label>
+                </div>
+              </fieldset>
+            </section>
+
+            <!-- КРОК 2 -->
+            <section class="cr-step" data-step="1" aria-labelledby="s2-title" hidden>
+              <h2 id="s2-title" class="font-heading text-2xl font-semibold text-primary sm:text-3xl dark:text-cream" tabindex="-1">Коли можете прийняти</h2>
+              <p class="mt-1 text-sm text-textMuted dark:text-white/70">Оберіть дні в календарі та години початку записів. Однаковий розклад застосується до кожного обраного дня.</p>
+
+              <div class="grid grid-cols-1 gap-6 mt-6 md:grid-cols-[minmax(0,330px)_minmax(0,1fr)]">
+                <div class="cr-calendar" aria-describedby="cal-help err-days">
+                  <div class="flex items-center justify-between gap-2 mb-3">
+                    <button type="button" class="cr-icon-btn" id="cal-prev" aria-label="Попередній місяць"><svg class="icon" aria-hidden="true"><use href="#n-left"/></svg></button>
+                    <h3 id="cal-month" class="font-heading !text-xl font-semibold text-primary dark:text-cream" aria-live="polite">Місяць</h3>
+                    <button type="button" class="cr-icon-btn" id="cal-next" aria-label="Наступний місяць"><svg class="icon" aria-hidden="true"><use href="#n-right"/></svg></button>
+                  </div>
+                  <div class="cr-cal-grid cr-weekdays" aria-hidden="true"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Нд</span></div>
+                  <div id="cal-grid" class="cr-cal-grid" role="group" aria-labelledby="cal-month"></div>
+                  <ul class="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-xs text-textMuted dark:text-white/70" aria-hidden="true">
+                    <li class="flex items-center gap-1.5"><span class="cr-legend cr-legend-today"></span>Сьогодні</li>
+                    <li class="flex items-center gap-1.5"><span class="cr-legend cr-legend-on"></span>Обрано</li>
+                    <li class="flex items-center gap-1.5"><span class="cr-legend cr-legend-off"></span>Недоступно</li>
+                  </ul>
+                  <div class="flex flex-wrap gap-2 mt-4">
+                    <button type="button" class="cr-mini-btn" data-preset="weekdays">Будні місяця</button>
+                    <button type="button" class="cr-mini-btn" data-preset="weekends">Вихідні місяця</button>
+                    <button type="button" class="cr-mini-btn" data-preset="clear">Зняти всі</button>
+                  </div>
+                  <p id="cal-help" class="sr-only">Стрілками можна рухатися по днях, Enter або пробіл обирає день. Мишею можна провести по кількох днях.</p>
+                </div>
+
+                <div class="min-w-0">
+                  <div class="cr-field !mt-0">
+                    <label class="cr-label" for="duration">Тривалість одного запису</label>
+                    <select class="cr-input" id="duration" name="duration" aria-describedby="err-duration">
+                      <option value="">Оберіть тривалість</option>
+                      <option value="45">45 хв</option>
+                      <option value="60">1 година</option>
+                      <option value="90">1 година 30 хв</option>
+                      <option value="120">2 години</option>
+                    </select>
+                    <p class="cr-error" id="err-duration" hidden></p>
+                  </div>
+
+                  <fieldset class="mt-5" aria-describedby="err-times">
+                    <legend class="cr-label">Час початку записів</legend>
+                    <div class="grid grid-cols-3 gap-2 sm:grid-cols-4" id="time-chips">
+                      <label class="cr-time"><input type="checkbox" name="times" value="10:00"><span>10:00</span></label>
+                      <label class="cr-time"><input type="checkbox" name="times" value="11:00"><span>11:00</span></label>
+                      <label class="cr-time"><input type="checkbox" name="times" value="12:00"><span>12:00</span></label>
+                      <label class="cr-time"><input type="checkbox" name="times" value="13:00"><span>13:00</span></label>
+                      <label class="cr-time"><input type="checkbox" name="times" value="14:00"><span>14:00</span></label>
+                      <label class="cr-time"><input type="checkbox" name="times" value="15:00"><span>15:00</span></label>
+                      <label class="cr-time"><input type="checkbox" name="times" value="16:00"><span>16:00</span></label>
+                      <label class="cr-time"><input type="checkbox" name="times" value="17:00"><span>17:00</span></label>
+                      <label class="cr-time"><input type="checkbox" name="times" value="18:00"><span>18:00</span></label>
+                      <label class="cr-time"><input type="checkbox" name="times" value="19:00"><span>19:00</span></label>
+                      <label class="cr-time"><input type="checkbox" name="times" value="20:00"><span>20:00</span></label>
+                    </div>
+                    <p class="cr-error" id="err-times" hidden></p>
+                  </fieldset>
+
+                  <p class="flex items-start gap-2 mt-5 p-3 text-sm text-primary bg-creamMuted/70 rounded-md dark:bg-white/10 dark:text-cream" id="slot-summary" aria-live="polite"><svg class="icon mt-px text-accent" aria-hidden="true"><use href="#n-clock"/></svg><span>Оберіть дні та час.</span></p>
+                </div>
+              </div>
+              <p class="cr-error" id="err-days" hidden></p>
+
+              <h3 class="mt-6 !text-sm font-sans font-semibold text-textMain dark:text-cream">Обрані дні</h3>
+              <ul id="day-chips" class="flex flex-wrap gap-2 mt-2"></ul>
+            </section>
+
+            <!-- КРОК 3 -->
+            <section class="cr-step" data-step="2" aria-labelledby="s3-title" hidden>
+              <h2 id="s3-title" class="font-heading text-2xl font-semibold text-primary sm:text-3xl dark:text-cream" tabindex="-1">Де й на яких умовах</h2>
+              <p class="mt-1 text-sm text-textMuted dark:text-white/70">Точну адресу модель побачить лише після підтвердження запису, у каталозі — тільки район.</p>
+
+              <div class="grid grid-cols-1 gap-x-5 mt-6 sm:grid-cols-2">
+                <div class="cr-field !mt-0">
+                  <label class="cr-label" for="district">Район Львова</label>
+                  <select class="cr-input" id="district" name="district" aria-describedby="err-district">
+                    <option value="">Оберіть район</option>
+                    <option value="Центр">Галицький / Центр</option>
+                    <option value="Сихів">Сихівський</option>
+                    <option value="Франківський">Франківський</option>
+                    <option value="Личаківський">Личаківський</option>
+                    <option value="Шевченківський">Шевченківський</option>
+                    <option value="Залізничний">Залізничний</option>
+                  </select>
+                  <p class="cr-error" id="err-district" hidden></p>
+                </div>
+                <div class="cr-field sm:!mt-0">
+                  <label class="cr-label" for="address">Адреса або назва салону</label>
+                  <input class="cr-input" id="address" name="address" type="text" autocomplete="street-address" placeholder="Barbershop «Рівень», вул. Дорошенка, 12" aria-describedby="err-address">
+                  <p class="cr-error" id="err-address" hidden></p>
+                </div>
+              </div>
+              <div class="cr-field">
+                <label class="cr-label" for="landmark">Як знайти вхід <span class="cr-opt">необов’язково</span></label>
+                <input class="cr-input" id="landmark" name="landmark" type="text" placeholder="Другий поверх, домофон 24">
+              </div>
+
+              <fieldset class="mt-6">
+                <legend class="cr-label">Умови для моделі</legend>
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                  <label class="cr-option"><input type="radio" name="priceType" value="free" checked><span class="cr-option-icon"><svg class="icon" aria-hidden="true"><use href="#n-shield"/></svg></span><span class="cr-option-title">Безкоштовно</span><span class="cr-option-text">Модель нічого не платить</span></label>
+                  <label class="cr-option"><input type="radio" name="priceType" value="supplies"><span class="cr-option-icon"><svg class="icon" aria-hidden="true"><use href="#n-tag"/></svg></span><span class="cr-option-title">За розхідники</span><span class="cr-option-text">Модель компенсує засоби</span></label>
+                  <label class="cr-option"><input type="radio" name="priceType" value="paid"><span class="cr-option-icon"><svg class="icon" aria-hidden="true"><use href="#n-cash"/></svg></span><span class="cr-option-title">Доплата моделі</span><span class="cr-option-text">Ви платите моделі за час</span></label>
+                </div>
+              </fieldset>
+
+              <div class="grid grid-cols-1 gap-x-5 sm:grid-cols-2">
+                <div class="cr-field" id="price-box" hidden>
+                  <label class="cr-label" for="price" id="price-label">Сума, ₴</label>
+                  <div class="relative">
+                    <input class="cr-input pr-10" id="price" name="price" type="number" min="50" max="1000" step="10" value="300" inputmode="numeric" aria-describedby="err-price">
+                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-textMuted pointer-events-none dark:text-white/60" aria-hidden="true">₴</span>
+                  </div>
+                  <p class="cr-error" id="err-price" hidden></p>
+                </div>
+                <div class="cr-field">
+                  <label class="cr-label" for="models">Скільки моделей шукаєте</label>
+                  <div class="flex items-stretch gap-2">
+                    <button type="button" class="cr-icon-btn !rounded-md" data-step-models="-1" aria-label="Зменшити кількість моделей">−</button>
+                    <input class="cr-input text-center !w-20" id="models" name="models" type="number" min="1" max="20" value="3" inputmode="numeric">
+                    <button type="button" class="cr-icon-btn !rounded-md" data-step-models="1" aria-label="Збільшити кількість моделей">+</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- КРОК 4 -->
+            <section class="cr-step" data-step="3" aria-labelledby="s4-title" hidden>
+              <h2 id="s4-title" class="font-heading text-2xl font-semibold text-primary sm:text-3xl dark:text-cream" tabindex="-1">Контакти та публікація</h2>
+              <p class="mt-1 text-sm text-textMuted dark:text-white/70">Ім’я та досвід з’являться на картці. Телефон бачить лише модель, яка записалася.</p>
+
+              <div class="grid grid-cols-1 gap-x-5 mt-6 sm:grid-cols-2">
+                <div class="cr-field !mt-0">
+                  <label class="cr-label" for="name">Ім’я та прізвище</label>
+                  <input class="cr-input" id="name" name="name" type="text" autocomplete="name" placeholder="Андрій Коваль" aria-describedby="err-name">
+                  <p class="cr-error" id="err-name" hidden></p>
+                </div>
+                <div class="cr-field sm:!mt-0">
+                  <label class="cr-label" for="exp">Досвід</label>
+                  <select class="cr-input" id="exp" name="exp">
+                    <option>Менше року</option>
+                    <option>1–2 роки</option>
+                    <option>3–5 років</option>
+                    <option>Понад 5 років</option>
+                  </select>
+                </div>
+                <div class="cr-field">
+                  <label class="cr-label" for="phone">Телефон</label>
+                  <input class="cr-input" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 67 123 45 67" aria-describedby="err-phone">
+                  <p class="cr-error" id="err-phone" hidden></p>
+                </div>
+                <div class="cr-field">
+                  <label class="cr-label" for="social">Instagram або Telegram <span class="cr-opt">необов’язково</span></label>
+                  <input class="cr-input" id="social" name="social" type="text" placeholder="@your_nickname">
+                </div>
+              </div>
+
+              <div class="mt-6 p-4 bg-cream border border-borderWarm rounded-md sm:p-5 dark:bg-darkSurface dark:border-white/15">
+                <h3 class="!text-lg font-heading font-semibold text-primary dark:text-cream">Перевірте заявку</h3>
+                <dl class="grid grid-cols-1 gap-x-6 gap-y-3 mt-3 text-sm sm:grid-cols-2" id="review-list"></dl>
+              </div>
+
+              <div class="mt-6">
+                <label class="flex items-start gap-3 text-sm leading-relaxed cursor-pointer text-textMain dark:text-cream" for="consent">
+                  <input class="mt-0.5 w-5 h-5 shrink-0 accent-[#1D442F] cursor-pointer" id="consent" name="consent" type="checkbox" aria-describedby="err-consent">
+                  <span>Підтверджую, що надаватиму послугу на вказаних умовах, без прихованих доплат, і погоджуюсь із правилами платформи.</span>
+                </label>
+                <p class="cr-error" id="err-consent" hidden></p>
+              </div>
+            </section>
+          </div>
+
+          <!-- Навігація кроками: «Назад» зліва, головна дія справа -->
+          <div class="flex items-center justify-between gap-3 px-5 py-4 bg-cream/70 border-t border-borderWarm rounded-b-lg sm:px-8 dark:bg-darkSurface/60 dark:border-white/15">
+            <button type="button" id="btn-back" class="inline-flex min-h-[44px] items-center justify-center gap-2 px-4 text-sm font-semibold text-textMain bg-transparent border border-borderWarm rounded-md transition-colors duration-200 hover:border-primary hover:bg-creamMuted active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:invisible sm:px-5 dark:text-cream dark:border-white/25 dark:hover:bg-white/10"><svg class="icon" aria-hidden="true"><use href="#n-left"/></svg>Назад</button>
+            <p class="hidden text-xs text-textMuted sm:block dark:text-white/60" id="draft-status" role="status"></p>
+            <button type="button" id="btn-next" class="inline-flex min-h-[44px] items-center justify-center gap-2 px-6 text-sm font-semibold text-darkSurface bg-accent rounded-md shadow-sm transition-all duration-200 hover:bg-accentHover hover:shadow-md active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:px-7">Далі<svg class="icon" aria-hidden="true"><use href="#n-right"/></svg></button>
+            <button type="submit" id="btn-submit" class="inline-flex min-h-[44px] items-center justify-center gap-2 px-6 text-sm font-semibold text-darkSurface bg-accent rounded-md shadow-sm transition-all duration-200 hover:bg-accentHover hover:shadow-md active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:px-7" hidden><svg class="icon" aria-hidden="true"><use href="#n-check"/></svg>Опублікувати слот</button>
+          </div>
+        </form>
+
+        <!-- Живе прев’ю -->
+        <aside id="preview" class="min-w-0 scroll-mt-24 lg:sticky lg:top-28" aria-labelledby="pv-heading">
+          <div class="p-5 text-cream bg-primary rounded-lg shadow-md sm:p-6 dark:bg-[#0F1D15] dark:ring-1 dark:ring-white/10">
+            <div class="flex items-end justify-between gap-3">
+              <div>
+                <p class="text-xs font-semibold tracking-wide uppercase text-[#E9B879]">Живе прев’ю</p>
+                <h2 id="pv-heading" class="mt-1 font-heading !text-2xl font-semibold text-cream">Так побачить модель</h2>
+              </div>
+              <p class="text-xs text-white/70"><span id="progress-done">0</span> / <span id="progress-total">11</span></p>
+            </div>
+            <div class="h-1.5 mt-3 overflow-hidden rounded-full bg-white/15" role="progressbar" aria-label="Заповнення заявки" aria-valuemin="0" aria-valuemax="11" aria-valuenow="0" id="progress">
+              <span class="block h-full w-0 rounded-full bg-accent transition-all duration-300" id="progress-bar"></span>
+            </div>
+
+            <article class="slot-card cr-preview-card mt-5 text-textMain" aria-label="Прев’ю картки слоту">
+              <figure class="slot-before-after">
+                <div class="ba-compare" style="--pos: 50%" role="group" aria-label="Приклад порівняння До і Після">
+                  <div class="ba-layer ba-after"><span class="tag ba-badge-after">Після</span></div>
+                  <div class="ba-layer ba-before"><span class="tag ba-badge-before">До</span></div>
+                  <div class="ba-divider" aria-hidden="true"><span class="ba-handle"><svg class="icon" aria-hidden="true"><use href="#n-swap"/></svg></span></div>
+                  <input type="range" class="ba-range" min="10" max="90" value="50" aria-label="Порівняння До і Після в прев’ю">
+                </div>
+              </figure>
+              <div class="slot-card-content">
+                <div class="slot-title-row">
+                  <div class="min-w-0">
+                    <h3 id="pv-name">Ваше ім’я</h3>
+                    <p class="verified-label"><svg class="icon" aria-hidden="true"><use href="#n-shield"/></svg><span id="pv-exp">Новий барбер · менше року</span></p>
+                  </div>
+                  <span class="price-badge price-free shrink-0" id="pv-price">Безкоштовно</span>
+                </div>
+                <p class="reliability"><svg class="icon" aria-hidden="true"><use href="#n-star"/></svg>Послуга <strong id="pv-service">Оберіть послугу</strong></p>
+                <dl class="slot-meta">
+                  <div><dt><span class="icon i-pin" aria-hidden="true"></span>Район</dt><dd id="pv-district">—</dd></div>
+                  <div><dt><span class="icon i-cal" aria-hidden="true"></span>Найближчий слот</dt><dd id="pv-when">Дата не обрана</dd></div>
+                </dl>
+                <ul class="tag-list" id="pv-tags"><li>Фото до/після</li></ul>
+                <div class="card-actions" aria-hidden="true">
+                  <span class="button button-primary">Відгукнутися</span>
+                  <span class="button button-outline">Профіль барбера</span>
+                </div>
+              </div>
+            </article>
+
+            <dl class="grid grid-cols-3 gap-2 mt-4 text-center">
+              <div class="p-2 rounded-md bg-white/10"><dt class="text-[11px] text-white/70">днів</dt><dd class="font-heading text-2xl font-semibold" id="pv-days">0</dd></div>
+              <div class="p-2 rounded-md bg-white/10"><dt class="text-[11px] text-white/70">слотів</dt><dd class="font-heading text-2xl font-semibold text-[#E9B879]" id="pv-slots">0</dd></div>
+              <div class="p-2 rounded-md bg-white/10"><dt class="text-[11px] text-white/70">моделей</dt><dd class="font-heading text-2xl font-semibold" id="pv-models">3</dd></div>
+            </dl>
+          </div>
+
+          <section class="mt-5 p-5 bg-white border border-borderWarm rounded-lg dark:bg-primary dark:border-white/15" aria-labelledby="tips-title">
+            <h2 id="tips-title" class="font-heading !text-xl font-semibold text-primary dark:text-cream">Щоб слот швидше забронювали</h2>
+            <ul class="grid gap-2 mt-3 text-sm text-textMuted dark:text-white/75">
+              <li class="flex gap-2"><svg class="icon shrink-0 text-accent" aria-hidden="true"><use href="#n-check"/></svg>Додайте референс — моделі легше уявити результат.</li>
+              <li class="flex gap-2"><svg class="icon shrink-0 text-accent" aria-hidden="true"><use href="#n-check"/></svg>Пропонуйте 3–4 дні в запасі, а не один.</li>
+              <li class="flex gap-2"><svg class="icon shrink-0 text-accent" aria-hidden="true"><use href="#n-check"/></svg>Опишіть вхід — менше запізнень і дзвінків.</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="done" class="w-[min(92vw,480px)] p-0 text-textMain bg-cream rounded-lg shadow-xl backdrop:bg-darkSurface/60 dark:bg-primary dark:text-cream" aria-labelledby="done-title">
+    <div class="p-6 sm:p-8">
+      <span class="inline-grid w-12 h-12 place-items-center text-darkSurface bg-accent rounded-full"><svg class="icon" aria-hidden="true"><use href="#n-check"/></svg></span>
+      <h2 id="done-title" class="mt-4 font-heading !text-3xl font-semibold text-primary dark:text-cream">Слот опубліковано</h2>
+      <p id="done-text" class="mt-2 text-sm leading-relaxed text-textMuted dark:text-white/75"></p>
+      <div class="flex flex-col-reverse gap-3 mt-6 sm:flex-row sm:justify-end">
+        <button type="button" id="done-close" class="inline-flex min-h-[44px] items-center justify-center px-5 text-sm font-semibold text-textMain border border-borderWarm rounded-md transition-colors hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:text-cream dark:border-white/25 dark:hover:bg-white/10">Створити ще одну</button>
+        <a class="inline-flex min-h-[44px] items-center justify-center px-5 text-sm font-semibold text-darkSurface bg-accent rounded-md transition-colors hover:bg-accentHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html#slots">Переглянути в каталозі</a>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="pb-8 pt-12 text-[#E2D9C8] bg-darkSurface border-t border-white/10">
+    <div class="grid grid-cols-1 gap-8 max-w-7xl mb-10 mx-auto px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <div>
+        <a class="inline-flex items-center gap-2 mb-4 text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html">
+          <img class="brand-mark h-9 w-auto" src="assets/images/logo.png" alt="">
+          <span class="font-heading font-semibold text-xl">BarberMatch Lviv</span>
+        </a>
+        <p class="max-w-xs mb-4 leading-relaxed text-sm text-white/70">Локальний P2P-маркетплейс, що поєднує барберів-початківців і моделей у Львові.</p>
+        <span class="inline-flex px-3 py-1.5 font-medium text-accent text-xs bg-accent/15 border border-accent/40 rounded-full">0 ₴ комісії · Розрахунок на місці</span>
+      </div>
+      <nav aria-label="Посилання для моделей і барберів">
+        <h2 class="mb-4 font-heading font-semibold text-cream text-xl">Навігація</h2>
+        <ul class="space-y-3 text-sm">
+          <li><a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#slots">Вільні слоти</a></li>
+          <li><a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#match">Підібрати стрижку</a></li>
+          <li><a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="barber.html">Профіль барбера</a></li>
+          <li><a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="create.html" aria-current="page">Створити заявку на модель</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Перехід за районами Львова">
+        <h2 class="mb-4 font-heading font-semibold text-cream text-xl">Райони Львова</h2>
+        <ul class="flex flex-wrap gap-2">
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#slots" data-district="Сихів">Сихів</a></li>
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#slots" data-district="Центр">Центр</a></li>
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#slots" data-district="Личаківський">Личаків</a></li>
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#slots" data-district="Франківський">Франківський</a></li>
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#slots" data-district="Шевченківський">Шевченківський</a></li>
+          <li><a class="inline-flex px-3 py-1.5 text-xs border border-white/15 rounded-full transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#slots" data-district="Залізничний">Залізничний</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="mb-4 font-heading font-semibold text-cream text-xl">Безпека та підтримка</h2>
+        <p class="mb-3 leading-relaxed text-sm text-white/70">Нагадуємо про запис за 24 і 2 години, щоб зменшити кількість неявок.</p>
+        <address class="not-italic text-sm">
+          <a class="block transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="mailto:hello@barbermatch.lviv">hello@barbermatch.lviv</a>
+          <a class="inline-block mt-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="https://t.me/">Telegram-підтримка</a>
+        </address>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-between gap-4 max-w-7xl mx-auto pt-6 px-4 text-center text-white/60 text-xs border-t border-white/10 sm:flex-row sm:px-6 sm:text-left lg:px-8">
+      <p>© 2026 BarberMatch Lviv. Усі права захищено</p>
+      <a class="transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent hover:text-accent" href="index.html#join">Правила платформи та конфіденційність</a>
+    </div>
+  </footer>
+</body>
+</html>
