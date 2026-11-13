@@ -623,3 +623,107 @@ body[data-page="barber"] .button {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ==========================================================================
+   ЛР10: мікроанімації (AOS, anime.js, CountUp.js) і підказки довіри (Tippy.js)
+   Усі «приховані» стани діють лише з класом html.fx-ready, який ставить js/effects.js:
+   без JS або без CDN контент лишається видимим.
+   ========================================================================== */
+
+/* AOS fade-up: замість стандартних 100 px — м’який зсув 14 px */
+html.fx-ready [data-aos="fade-up"] {
+  transform: translate3d(0, var(--fx-reveal-shift, 14px), 0);
+}
+
+/* Текст «Чому BarberMatch» / «Чому ми»: слова й описи до старту anime.js */
+.fx-word {
+  display: inline-block;
+}
+
+html.fx-ready .fx-why-pending .fx-word {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+html.fx-ready .fx-why-pending .feature-card > p,
+html.fx-ready .fx-why-pending .audience-card > p {
+  opacity: 0;
+}
+
+/* Лічильники: цифри однакової ширини — текст не «скаче» */
+#cutsMetric,
+#attendanceMetric,
+#reviewsMetric,
+#reliabilityValue {
+  font-variant-numeric: tabular-nums;
+}
+
+.fx-meter {
+  transform-origin: left center;
+}
+
+/* Кнопка «ⓘ» біля терміна: ціль 24×24 px (WCAG 2.5.8), висоту бейджа не змінює */
+.fx-hint {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin: -6px -6px -6px 2px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: 600 15px/1 Inter, system-ui, sans-serif;
+  cursor: help;
+  opacity: 0.8;
+}
+
+.fx-hint:hover,
+.fx-hint:focus-visible {
+  opacity: 1;
+}
+
+.fx-hint:focus-visible {
+  outline: 2px solid #C87D32;
+  outline-offset: 1px;
+  box-shadow: none;
+}
+
+/* Тема Tippy в кольорах бренду: світла — darkSurface/cream, темна — навпаки */
+.tippy-box[data-theme~="barbermatch"] {
+  border-radius: 4px;
+  background-color: #14261C;
+  color: #F9F3E8;
+  font: 400 14px/1.45 Inter, system-ui, sans-serif;
+  box-shadow: 0 6px 20px rgb(20 38 28 / 25%);
+}
+
+.tippy-box[data-theme~="barbermatch"] > .tippy-content {
+  padding: 8px 10px;
+}
+
+.tippy-box[data-theme~="barbermatch"] > .tippy-arrow {
+  color: #14261C;
+}
+
+html[data-theme="dark"] .tippy-box[data-theme~="barbermatch"] {
+  background-color: #F9F3E8;
+  color: #14261C;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 40%);
+}
+
+html[data-theme="dark"] .tippy-box[data-theme~="barbermatch"] > .tippy-arrow {
+  color: #F9F3E8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.fx-ready [data-aos],
+  html.fx-ready .fx-why-pending .fx-word,
+  html.fx-ready .fx-why-pending .feature-card > p,
+  html.fx-ready .fx-why-pending .audience-card > p {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
