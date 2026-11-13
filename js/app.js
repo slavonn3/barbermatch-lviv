@@ -810,10 +810,13 @@ function initializeBarberProfile() {
         <a class="text-link" href="barber.html?id=${otherId}">Профіль <span aria-hidden="true">→</span></a>
       </article>`).join('');
 
-  document.querySelector('#complain').addEventListener('click', (event) => {
-    event.currentTarget.disabled = true;
-    document.querySelector('#complainMsg').textContent = 'Дякуємо. Скаргу передано модераторам, вони розглянуть її протягом доби.';
-  });
+  /* ЛР №9: «Поскаржитись» веде на форму підтримки з передзаповненою темою.
+     Раніше кнопка показувала «Скаргу передано модераторам», хоча нічого не надсилала. */
+  const complainLink = document.querySelector('#complain');
+  if (complainLink) {
+    const profileId = BARBERS[id] ? id : '1'; // той самий барбер, якого показує сторінка
+    complainLink.href = `support.html?topic=complaint&barber=${encodeURIComponent(profileId)}`;
+  }
 }
 
 function initializeComparisonSliders() {
