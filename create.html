@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="create.css">
   <script src="js/app.js" defer></script>
   <script src="create.js" defer></script>
+  <script src="js/widget-planner.js" defer></script>
 </head>
 <body class="overflow-x-hidden font-sans" data-page="create">
   <svg class="icon-sprite" aria-hidden="true" focusable="false">
@@ -460,6 +461,73 @@
               <li class="flex gap-2"><svg class="icon shrink-0 text-accent" aria-hidden="true"><use href="#n-check"/></svg>Опишіть вхід — менше запізнень і дзвінків.</li>
             </ul>
           </section>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ЛР11: віджет «Планувальник практики» -->
+    <section class="pb-12 md:pb-16" aria-labelledby="planner-title">
+      <div class="grid items-start gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(320px,380px)] lg:px-8 xl:gap-12" data-widget="planner">
+        <form class="min-w-0 px-5 py-6 bg-white border border-borderWarm rounded-lg shadow-sm sm:px-8 sm:py-8 dark:bg-primary dark:border-white/15" novalidate autocomplete="off" aria-labelledby="planner-title">
+          <p class="text-xs font-semibold tracking-wide uppercase text-[#805018] dark:text-[#E9B879]">Для барберів</p>
+          <h2 id="planner-title" class="mt-1 font-heading !text-3xl font-semibold text-primary dark:text-cream">Сплануй свою практику</h2>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-textMuted dark:text-white/75">Скільки тижнів і грошей знадобиться, щоб набрати потрібну кількість стрижок.</p>
+
+          <div class="plan-fields grid grid-cols-1 gap-x-5 gap-y-5 mt-6 sm:grid-cols-3">
+                  <div class="cr-field !mt-0">
+                    <label class="cr-label" for="planGoal">Мета, стрижок</label>
+                    <input class="cr-input" id="planGoal" name="goal" type="number" min="1" max="200" step="1" value="30" inputmode="numeric" required aria-describedby="planGoalHint planGoalError">
+                    <div><p class="mt-1.5 text-xs text-textMuted dark:text-white/65" id="planGoalHint">До наступного рівня</p><p class="cr-error" id="planGoalError" hidden></p></div>
+                  </div>
+                  <div class="cr-field !mt-0">
+                    <label class="cr-label" for="planDone">Уже зроблено</label>
+                    <input class="cr-input" id="planDone" name="done" type="number" min="0" max="200" step="1" value="0" inputmode="numeric" required aria-describedby="planDoneHint planDoneError">
+                    <div><p class="mt-1.5 text-xs text-textMuted dark:text-white/65" id="planDoneHint">0 — якщо тільки починаєш</p><p class="cr-error" id="planDoneError" hidden></p></div>
+                  </div>
+                  <div class="cr-field !mt-0">
+                    <label class="cr-label" for="planPerWeek">Моделей на тиждень</label>
+                    <input class="cr-input" id="planPerWeek" name="perWeek" type="number" min="1" max="20" step="1" value="3" inputmode="numeric" required aria-describedby="planPerWeekHint planPerWeekError">
+                    <div><p class="mt-1.5 text-xs text-textMuted dark:text-white/65" id="planPerWeekHint">Реально — 2–5 при навчанні ввечері</p><p class="cr-error" id="planPerWeekError" hidden></p></div>
+                  </div>
+          </div>
+
+          <fieldset class="mt-6">
+            <legend class="cr-label">Умови для моделі</legend>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <label class="cr-option"><input type="radio" name="planPrice" value="free"><span class="cr-option-icon"><svg class="icon" aria-hidden="true"><use href="#n-shield"/></svg></span><span class="cr-option-title">Безкоштовно</span><span class="cr-option-text">Без витрат для вас</span></label>
+              <label class="cr-option"><input type="radio" name="planPrice" value="supplies" checked><span class="cr-option-icon"><svg class="icon" aria-hidden="true"><use href="#n-tag"/></svg></span><span class="cr-option-title">За розхідники</span><span class="cr-option-text">Засоби на кожну стрижку</span></label>
+              <label class="cr-option"><input type="radio" name="planPrice" value="paid"><span class="cr-option-icon"><svg class="icon" aria-hidden="true"><use href="#n-cash"/></svg></span><span class="cr-option-title">Доплата моделі</span><span class="cr-option-text">Ви платите моделі за час</span></label>
+            </div>
+          </fieldset>
+
+          <div class="grid grid-cols-1 gap-x-5 sm:grid-cols-2">
+                  <div class="cr-field " data-plan-cost="supplies">
+                    <label class="cr-label" for="planSupplies">Розхідники на 1 стрижку, ₴</label>
+                    <input class="cr-input" id="planSupplies" name="supplies" type="number" min="0" max="2000" step="1" value="300" inputmode="numeric" required aria-describedby="planSuppliesError">
+                    <p class="cr-error" id="planSuppliesError" hidden></p>
+                  </div>
+                  <div class="cr-field " data-plan-cost="paid" hidden>
+                    <label class="cr-label" for="planPay">Доплата моделі за 1 стрижку, ₴</label>
+                    <input class="cr-input" id="planPay" name="pay" type="number" min="0" max="2000" step="1" value="200" inputmode="numeric" required aria-describedby="planPayError">
+                    <p class="cr-error" id="planPayError" hidden></p>
+                  </div>
+          </div>
+        </form>
+
+        <aside class="min-w-0 p-5 text-cream bg-primary rounded-lg shadow-md sm:p-6 lg:sticky lg:top-28 dark:bg-[#0F1D15] dark:ring-1 dark:ring-white/10" aria-labelledby="plan-result-title">
+          <p class="text-xs font-semibold tracking-wide uppercase text-[#E9B879]">Твій план · демо-розрахунок</p>
+          <h2 id="plan-result-title" class="mt-1 font-heading !text-2xl font-semibold text-cream">Результат</h2>
+          <div class="mt-4" data-plan-result aria-live="polite">
+            <p class="font-heading text-5xl font-semibold leading-none" data-plan-out="weeks">10 тижнів</p>
+            <p class="mt-2 text-sm text-white/75" data-plan-out="finish">Фініш ≈ 30 грудня 2026</p>
+            <dl class="grid grid-cols-2 gap-2 mt-5">
+              <div class="p-3 rounded-md bg-white/10"><dt class="text-[11px] text-white/70">залишилось стрижок</dt><dd class="font-heading text-2xl font-semibold" data-plan-out="remaining">30</dd></div>
+              <div class="p-3 rounded-md bg-white/10"><dt class="text-[11px] text-white/70">витрати</dt><dd class="font-heading text-2xl font-semibold text-[#E9B879]" data-plan-out="cost">9 000 ₴</dd></div>
+            </dl>
+            <p class="mt-3 text-sm text-white/80" data-plan-out="costNote">300 ₴ на стрижку — розхідники</p>
+            <p class="flex gap-2 mt-4 p-3 text-sm rounded-md bg-accent/15 text-[#F3D6AE]" data-plan-out="tip"><svg class="icon shrink-0" aria-hidden="true"><use href="#n-bell"/></svg><span>Якщо брати 5 моделей на тиждень, дійдеш на 4 тижні швидше.</span></p>
+          </div>
+          <p class="mt-3 text-sm font-semibold text-[#F4A492]" data-plan-out="stale" hidden>Виправте поле вище — показано останній коректний розрахунок.</p>
         </aside>
       </div>
     </section>

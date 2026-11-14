@@ -430,93 +430,6 @@ function initializeSlotFilters() {
   applyFilters();
 }
 
-function initializeMatchFinder() {
-  const form = document.querySelector('#matchForm');
-  if (!form) return;
-
-  const steps = [...form.querySelectorAll('[data-step]')];
-  const nextButton = document.querySelector('#matchNext');
-  const backButton = document.querySelector('#matchBack');
-  const countElement = document.querySelector('#matchCount');
-  const countLabelElement = document.querySelector('#matchCountLabel');
-  const progressSteps = [...document.querySelectorAll('.match-progress li')];
-  const summary = document.querySelector('#matchSummary');
-  let stepIndex = 0;
-
-  function matchingSlots() {
-    const price = form.querySelector('[name="matchPrice"]:checked')?.value || '';
-    const districts = [...form.querySelectorAll('[name="matchDistrict"]:checked')].map((input) => input.value);
-    const checkedServices = [...form.querySelectorAll('[name="service"]:checked')].map((input) => input.value);
-    return [...document.querySelectorAll('#slotCards .slot-card')].filter((card) => {
-      if (price && card.dataset.price !== price) return false;
-      if (districts.length && !districts.includes(card.dataset.district)) return false;
-      if (checkedServices.includes('beard') && !card.dataset.beard) return false;
-      if (checkedServices.includes('hair') && !card.dataset.hair) return false;
-      if (checkedServices.includes('combo') && (!card.dataset.hair || !card.dataset.beard)) return false;
-      return true;
-    });
-  }
-
-  function updateMatchCount() {
-    const count = matchingSlots().length;
-    const pluralCategory = new Intl.PluralRules('uk').select(count);
-    countElement.textContent = count;
-    countLabelElement.textContent = {
-      one: 'слот',
-      few: 'слоти',
-      many: 'слотів',
-      other: 'слотів'
-    }[pluralCategory];
-    const chosenDistricts = [...form.querySelectorAll('[name="matchDistrict"]:checked')].map((input) => input.value);
-    const chosenPrice = form.querySelector('[name="matchPrice"]:checked')?.parentElement.innerText.trim();
-    summary.textContent = [
-      chosenPrice && form.querySelector('[name="matchPrice"]:checked').value ? chosenPrice : '',
-      chosenDistricts.join(', ')
-    ].filter(Boolean).join(' · ') || 'Усі райони та будь-які фінансові умови';
-  }
-
-  function updateStep() {
-    steps.forEach((step, index) => { step.hidden = index !== stepIndex; });
-    progressSteps.forEach((step, index) => {
-      const isActive = index <= stepIndex;
-      step.classList.toggle('is-active', isActive);
-      if (isActive) {
-        if (index === stepIndex) step.setAttribute('aria-current', 'step');
-        else step.removeAttribute('aria-current');
-      } else {
-        step.removeAttribute('aria-current');
-      }
-    });
-    backButton.disabled = stepIndex === 0;
-    backButton.hidden = stepIndex === 0;
-    nextButton.hidden = stepIndex === steps.length - 1;
-    if (stepIndex === steps.length - 1) updateMatchCount();
-  }
-
-  nextButton.addEventListener('click', () => {
-    stepIndex = Math.min(stepIndex + 1, steps.length - 1);
-    updateStep();
-  });
-  backButton.addEventListener('click', () => {
-    stepIndex = Math.max(stepIndex - 1, 0);
-    updateStep();
-  });
-  form.querySelectorAll('input').forEach((control) => {
-    control.addEventListener('change', () => {
-      if (stepIndex === steps.length - 1) updateMatchCount();
-    });
-  });
-  document.querySelector('#showMatches').addEventListener('click', () => {
-    const slotsForm = document.querySelector('#slotsFilter');
-    const districts = [...form.querySelectorAll('[name="matchDistrict"]:checked')].map((input) => input.value);
-    const price = form.querySelector('[name="matchPrice"]:checked')?.value || '';
-    const services = [...form.querySelectorAll('[name="service"]:checked')].map((input) => input.value);
-    slotsForm._applyMatchFilters({ price, districts, services });
-    document.querySelector('#slots').scrollIntoView({ behavior: 'smooth' });
-  });
-  updateStep();
-}
-
 function initializeRegistration() {
   const form = document.querySelector('#regForm');
   if (!form) return;
@@ -832,7 +745,6 @@ initializeMobileMenu();
 initializeDistrictNavigation();
 initializeRoleSwitches();
 initializeSlotFilters();
-initializeMatchFinder();
 initializeRegistration();
 initializeBarberProfile();
 initializeComparisonSliders();
