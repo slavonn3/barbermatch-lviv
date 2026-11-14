@@ -727,3 +727,247 @@ html[data-theme="dark"] .tippy-box[data-theme~="barbermatch"] > .tippy-arrow {
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   ЛР11: «Швидкий підбір» — нові поля, живий лічильник, топ-3
+   Стилі повторюють наявні пігулки панелі (рамка #55715F, текст cream, акцент мідний)
+   ========================================================================== */
+.match-hair-group {
+  margin-top: var(--spacing-lg);
+}
+
+.match-number-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  gap: var(--spacing-lg);
+}
+
+.match-number {
+  min-width: 0;
+}
+
+.match-number > label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-on-dark-muted);
+  font-size: var(--text-small-meta);
+}
+
+.match-number > label .icon {
+  color: var(--color-accent-muted);
+}
+
+.match-number-box {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  padding-right: var(--spacing-md);
+  border: 1px solid var(--color-art-green-muted);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-on-dark);
+  transition: border-color var(--transition-fast);
+}
+
+.match-number-box:hover {
+  border-color: var(--color-text-on-dark-muted);
+}
+
+.match-number-box:focus-within {
+  border-color: var(--color-accent-cta);
+  box-shadow: 0 0 0 1px var(--color-accent-cta), 0 0 0 4px rgb(200 125 50 / 35%);
+}
+
+/* Стрілки-спінери прибрано заради вигляду пігулки; ↑/↓ з клавіатури працюють */
+.match-number-box input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.match-number-box input::-webkit-outer-spin-button,
+.match-number-box input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.match-number-box input {
+  min-width: 0;
+  flex: 1;
+  min-height: 40px;
+  padding: 0 var(--spacing-sm) 0 var(--spacing-md);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: var(--text-base);
+  font-variant-numeric: tabular-nums;
+}
+
+.match-number-box input:focus,
+.match-number-box input:focus-visible {
+  /* Глобальне кільце фокусу (з !important) тут малює вся «пігулка» через :focus-within — без другої рамки всередині */
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.match-number-box > span {
+  color: var(--color-text-on-dark-muted);
+  font-size: var(--text-sm);
+}
+
+.match-number-box:has(input[aria-invalid="true"]) {
+  border-width: 2px;
+  border-color: #F4A492;
+}
+
+.match-hint,
+.match-error {
+  margin-top: 6px;
+  font-size: var(--text-xs);
+  line-height: 1.4;
+}
+
+.match-hint {
+  color: var(--color-text-on-dark-72);
+}
+
+.match-error {
+  color: #F4A492; /* 5.51:1 на #1D442F */
+  font-weight: 600;
+}
+
+.match-controls {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.match-live {
+  margin-right: auto;
+  color: var(--color-text-on-dark-muted);
+  font-size: var(--text-sm);
+}
+
+.match-live strong {
+  color: var(--color-accent-muted);
+  font-size: var(--text-base);
+  font-variant-numeric: tabular-nums;
+}
+
+.match-result {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.match-result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+.match-demo {
+  color: var(--color-accent-muted);
+}
+
+.match-top {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-md);
+}
+
+.match-top:empty {
+  display: none;
+}
+
+.match-top li {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border-on-dark);
+  border-radius: var(--radius-md);
+}
+
+.match-top-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.match-top-name {
+  color: var(--color-text-on-dark);
+  font-weight: 600;
+}
+
+.match-top-score {
+  color: var(--color-accent-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.match-top-meta {
+  color: var(--color-text-on-dark-muted);
+  font-size: var(--text-sm);
+}
+
+.match-top a {
+  justify-self: start;
+  color: var(--color-accent-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.match-zero {
+  color: var(--color-text-on-dark);
+}
+
+.match-controls .button[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.match-live.is-stale,
+.match-result.is-stale {
+  opacity: 0.6;
+}
+
+@media (max-width: 767px) {
+  .match-number-row,
+  .match-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .match-result-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .match-live {
+    flex-basis: 100%;
+  }
+}
+
+/* ЛР11: поля планувальника в одну лінію — рядки «підпис / поле / підказка» спільні для трьох колонок (subgrid) */
+@media (min-width: 640px) {
+  .plan-fields {
+    grid-template-rows: auto auto auto;
+  }
+
+  .plan-fields > .cr-field {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  .plan-fields .cr-label {
+    align-self: end; /* якщо підпис переноситься, сусідні «притискаються» до поля */
+  }
+}
