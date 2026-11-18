@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="utf-8">
@@ -6,45 +6,36 @@
   <meta name="color-scheme" content="light">
   <meta name="description" content="Шукаєте безкоштовні стрижки у Львові? Платформа об'єднує барберів-початківців та моделей. Платіть лише за розхідники та бронюйте онлайн без комісій!">
   <title>Безкоштовні стрижки Львів | BarberMatch</title>
+  <!-- ЛР12: SEO — канонічна адреса (основний домен — Vercel, там CI/CD) і картка для соцмереж -->
+  <link rel="canonical" href="https://barbermatch-lviv.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BarberMatch Lviv">
+  <meta property="og:locale" content="uk_UA">
+  <meta property="og:url" content="https://barbermatch-lviv.vercel.app/">
+  <meta property="og:title" content="Безкоштовні стрижки Львів | BarberMatch">
+  <meta property="og:description" content="Шукаєте безкоштовні стрижки у Львові? Платформа об'єднує барберів-початківців та моделей. Платіть лише за розхідники та бронюйте онлайн без комісій!">
+  <meta property="og:image" content="https://barbermatch-lviv.vercel.app/assets/images/hero_bg.webp">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1072">
+  <meta property="og:image:alt" content="Інтер’єр барбершопу у Львові">
+  <meta name="twitter:card" content="summary_large_image">
   <script>try { if (localStorage.getItem('barbermatch-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) { /* без сховища — світла тема */ }</script>
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <!-- ЛР12: фон Hero — LCP-елемент; він задається в CSS, тому браузер знаходить його пізно. Preload з високим пріоритетом -->
+  <link rel="preload" as="image" href="assets/images/hero_bg.webp" type="image/webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: ['selector', '[data-theme="dark"]'],
-      theme: {
-        extend: {
-          colors: {
-            primary: '#1D442F',
-            darkSurface: '#14261C',
-            accent: '#C87D32',
-            accentHover: '#DF8E3C',
-            cream: '#F9F3E8',
-            creamMuted: '#EFE6D5',
-            borderWarm: '#D6CBB8',
-            textMain: '#18221D',
-            textMuted: '#5A655E',
-            success: '#2E7D32',
-            warning: '#ED6C02',
-            danger: '#D32F2F'
-          },
-          fontFamily: {
-            heading: ['"Crimson Text"', 'Georgia', 'serif'],
-            sans: ['Inter', 'system-ui', 'sans-serif']
-          }
-        }
-      }
-    };
-  </script>
+  <!-- ЛР12: CSS шрифтів не блокує першу відмальовку (font-display: swap уже є) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="custom-styles.css">
   <!-- ЛР10: CSS плагіна — у <head>. Завантаження без блокування рендеру (аудит: aos.css затримував LCP);
        стилі потрібні лише блокам нижче першого екрана. integrity — захист від підміни файлу на CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
+  <!-- ЛР12: зібраний Tailwind CSS 3.4.17 замість Play CDN. Останнім серед стилів — як і <style>, який CDN додавав у кінець <head>: каскад не змінюється -->
+  <link rel="stylesheet" href="css/tailwind.css">
   <!-- ЛР10: бібліотеки через jsDelivr (точні версії, defer зберігає порядок). Popper — перед Tippy -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha384-n1AULnKdMJlK1oQCLNDL9qZsDgXtH6jRYFCpBtWFc+a9Yve0KSoMn575rk755NJZ" crossorigin="anonymous" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js" integrity="sha384-oLmuahJgYYR1aWgZwdMQQ2AClE6A2eEwV2x1Z7cbIHehfkkmommQLH3wX1NDEszb" crossorigin="anonymous" defer></script>
@@ -97,7 +88,7 @@
         <span aria-hidden="true">☰</span>
       </button>
     </div>
-    <div class="mobile-menu-panel absolute left-0 overflow-hidden pointer-events-none right-0 top-full -translate-y-2 max-h-0 border-b border-borderWarm opacity-0 shadow-xl duration-200 transition-all xl:hidden" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-panel absolute left-0 overflow-hidden pointer-events-none right-0 top-full -translate-y-2 max-h-0 border-b border-borderWarm opacity-0 shadow-xl duration-200 transition-all xl:hidden" id="mobileMenu" aria-hidden="true" inert>
       <nav class="grid gap-1 max-w-7xl mx-auto px-4 py-4 sm:px-6" aria-label="Мобільна навігація">
         <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="#slots">Вільні слоти</a>
         <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="#why">Переваги</a>
@@ -283,7 +274,7 @@
           <input class="peer/s3 sr-only" type="radio" name="shop" id="shop-3">
 
           <label class="flex cursor-pointer items-center gap-4 rounded border border-borderWarm dark:border-[#2C4A39] bg-cream dark:bg-[#14261C] p-4 transition-colors duration-200 hover:border-accent peer-checked/s1:border-accent peer-checked/s1:bg-white dark:peer-checked/s1:bg-[#24402F] peer-checked/s1:ring-1 peer-checked/s1:ring-accent peer-focus-visible/s1:ring-2 peer-focus-visible/s1:ring-primary lg:col-span-2" for="shop-1">
-            <img class="h-16 w-16 shrink-0 rounded object-cover" src="assets/images/barbers/andrii-workplace.jpg" alt="Робоче місце Андрія Коваля" width="64" height="64" loading="lazy">
+            <img class="h-16 w-16 shrink-0 rounded object-cover" src="assets/images/barbers/andrii-workplace.webp" alt="Робоче місце Андрія Коваля" width="64" height="64" loading="lazy">
             <span class="block">
               <span class="block text-base font-semibold">Barbershop «Сихів Cut»</span>
               <span class="mt-1 block text-sm text-textMuted dark:text-[#B8C4BB]">вул. Хоткевича, 12 · Сихів</span>
@@ -291,7 +282,7 @@
             </span>
           </label>
           <label class="flex cursor-pointer items-center gap-4 rounded border border-borderWarm dark:border-[#2C4A39] bg-cream dark:bg-[#14261C] p-4 transition-colors duration-200 hover:border-accent peer-checked/s2:border-accent peer-checked/s2:bg-white dark:peer-checked/s2:bg-[#24402F] peer-checked/s2:ring-1 peer-checked/s2:ring-accent peer-focus-visible/s2:ring-2 peer-focus-visible/s2:ring-primary lg:col-span-2" for="shop-2">
-            <img class="h-16 w-16 shrink-0 rounded object-cover" src="assets/images/barbers/oleh-workplace.jpg" alt="Робоче місце Олега Мельника" width="64" height="64" loading="lazy">
+            <img class="h-16 w-16 shrink-0 rounded object-cover" src="assets/images/barbers/oleh-workplace.webp" alt="Робоче місце Олега Мельника" width="64" height="64" loading="lazy">
             <span class="block">
               <span class="block text-base font-semibold">Barbershop «Рівень»</span>
               <span class="mt-1 block text-sm text-textMuted dark:text-[#B8C4BB]">вул. Дорошенка, 24 · Центр</span>
@@ -299,7 +290,7 @@
             </span>
           </label>
           <label class="flex cursor-pointer items-center gap-4 rounded border border-borderWarm dark:border-[#2C4A39] bg-cream dark:bg-[#14261C] p-4 transition-colors duration-200 hover:border-accent peer-checked/s3:border-accent peer-checked/s3:bg-white dark:peer-checked/s3:bg-[#24402F] peer-checked/s3:ring-1 peer-checked/s3:ring-accent peer-focus-visible/s3:ring-2 peer-focus-visible/s3:ring-primary lg:col-span-2" for="shop-3">
-            <img class="h-16 w-16 shrink-0 rounded object-cover" src="assets/images/barbers/marta-workplace.jpg" alt="Робоче місце Марти Лисенко" width="64" height="64" loading="lazy">
+            <img class="h-16 w-16 shrink-0 rounded object-cover" src="assets/images/barbers/marta-workplace.webp" alt="Робоче місце Марти Лисенко" width="64" height="64" loading="lazy">
             <span class="block">
               <span class="block text-base font-semibold">Студія «Лінія»</span>
               <span class="mt-1 block text-sm text-textMuted dark:text-[#B8C4BB]">вул. Личаківська, 58 · Личаківський</span>
@@ -336,13 +327,13 @@
       <div class="container join-layout">
         <div class="join-copy"><p class="eyebrow">Почни з простого</p><h2>Створити акаунт</h2><p>Один раз підтверди номер — і ми нагадаємо про запис за 24 та 2 години.</p></div>
         <form id="regForm" class="reg-form" aria-label="Реєстрація нового користувача" novalidate>
-          <fieldset class="form-role-group"><legend>Я приєднуюся як</legend><label for="accountRoleModel"><input id="accountRoleModel" type="radio" name="accountRole" value="model" checked class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Модель</span></label><label for="accountRoleBarber"><input id="accountRoleBarber" type="radio" name="accountRole" value="barber" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Барбер</span></label></fieldset>
+          <fieldset class="form-role-group"><legend>Я приєднуюся як</legend><label><input id="accountRoleModel" type="radio" name="accountRole" value="model" checked class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Модель</span></label><label><input id="accountRoleBarber" type="radio" name="accountRole" value="barber" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Барбер</span></label></fieldset>
           <div class="form-field [&>*]:min-w-0"><label for="regName">Ім’я</label><input id="regName" name="name" type="text" autocomplete="name" minlength="2" required aria-describedby="nameMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><p class="form-message" id="nameMessage" aria-live="polite"></p></div>
           <div class="form-field [&>*]:min-w-0"><label for="regPhone">Телефон</label><div class="input-action-row"><input id="regPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 XX XXX XX XX" required aria-describedby="phoneMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><button class="button button-outline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" id="sendOtp" type="button">Надіслати код</button></div><p class="form-message" id="phoneMessage" aria-live="polite">Формат: +380 XX XXX XX XX</p></div>
           <div class="form-field [&>*]:min-w-0"><label for="regOtp">Код OTP</label><input id="regOtp" name="otp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="4" pattern="[0-9]{4}" placeholder="4 цифри" required aria-describedby="otpMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><p class="form-message" id="otpMessage" aria-live="polite"></p></div>
           <div class="form-field [&>*]:min-w-0"><label for="regDistrict">Район Львова</label><select id="regDistrict" name="district" required aria-describedby="districtMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><option value="">Оберіть район</option></select><p class="form-message" id="districtMessage" aria-live="polite"></p></div>
           <div class="form-field [&>*]:min-w-0"><label for="regHair" id="regHairLabel">Тип волосся</label><select id="regHair" name="hair" required aria-describedby="hairMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><option value="">Оберіть варіант</option><option value="short">Коротке</option><option value="medium">Середнє</option><option value="long">Довге</option><option value="curly">Кучеряве</option><option value="beard">Густа борода</option></select><p class="form-message" id="hairMessage" aria-live="polite"></p></div>
-          <label class="consent-field" for="regConsent"><input id="regConsent" name="consent" type="checkbox" required aria-describedby="consentMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Погоджуюсь із правилами платформи й нагадуваннями про запис</span></label>
+          <label class="consent-field"><input id="regConsent" name="consent" type="checkbox" required aria-describedby="consentMessage" class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"><span>Погоджуюсь із правилами платформи й нагадуваннями про запис</span></label>
           <p class="form-message" id="consentMessage" aria-live="polite"></p><p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
           <button class="button button-primary submit-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" type="submit">Створити акаунт</button>
         </form>

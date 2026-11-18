@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://slavonn3.github.io/barbermatch-lviv/sitemap.xml
-
+Sitemap: https://barbermatch-lviv.vercel.app/sitemap.xml
