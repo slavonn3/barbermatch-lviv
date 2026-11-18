@@ -20,6 +20,8 @@
   <meta property="og:image:alt" content="Інтер’єр барбершопу у Львові">
   <meta name="twitter:card" content="summary_large_image">
   <script>try { if (localStorage.getItem('barbermatch-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) { /* без сховища — світла тема */ }</script>
+  <!-- Правки викладача: поява фону Hero лише при першому вході в сесії. Клас ставиться до першої відмальовки, щоб фон не «стрибав»; без JS чи сховища — статичний фон -->
+  <script>try { if (!sessionStorage.getItem('barbermatch-hero-intro')) { sessionStorage.setItem('barbermatch-hero-intro', '1'); document.documentElement.classList.add('hero-intro'); } } catch (e) { /* без сховища — без анімації */ }</script>
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <!-- ЛР12: фон Hero — LCP-елемент; він задається в CSS, тому браузер знаходить його пізно. Preload з високим пріоритетом -->
   <link rel="preload" as="image" href="assets/images/hero_bg.webp" type="image/webp" fetchpriority="high">
