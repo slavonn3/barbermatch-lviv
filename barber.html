@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="utf-8">
@@ -6,45 +6,36 @@
   <meta name="color-scheme" content="light">
   <meta name="description" content="Профіль барбера BarberMatch Lviv: портфоліо «До/Після», відгуки та вільні слоти для запису у Львові.">
   <title>Барбер у Львові — профіль | BarberMatch</title>
+  <!-- ЛР12: SEO — канонічна адреса (основний домен — Vercel, там CI/CD) і картка для соцмереж -->
+  <link rel="canonical" href="https://barbermatch-lviv.vercel.app/barber.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BarberMatch Lviv">
+  <meta property="og:locale" content="uk_UA">
+  <meta property="og:url" content="https://barbermatch-lviv.vercel.app/barber.html">
+  <meta property="og:title" content="Барбер у Львові — профіль | BarberMatch">
+  <meta property="og:description" content="Профіль барбера BarberMatch Lviv: портфоліо «До/Після», відгуки та вільні слоти для запису у Львові.">
+  <meta property="og:image" content="https://barbermatch-lviv.vercel.app/assets/images/hero_bg.webp">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1072">
+  <meta property="og:image:alt" content="Інтер’єр барбершопу у Львові">
+  <meta name="twitter:card" content="summary_large_image">
   <script>try { if (localStorage.getItem('barbermatch-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) { /* без сховища — світла тема */ }</script>
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <!-- ЛР12: фон Hero — LCP-елемент; він задається в CSS, тому браузер знаходить його пізно. Preload з високим пріоритетом -->
+  <link rel="preload" as="image" href="assets/images/hero_bg.webp" type="image/webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: ['selector', '[data-theme="dark"]'],
-      theme: {
-        extend: {
-          colors: {
-            primary: '#1D442F',
-            darkSurface: '#14261C',
-            accent: '#C87D32',
-            accentHover: '#DF8E3C',
-            cream: '#F9F3E8',
-            creamMuted: '#EFE6D5',
-            borderWarm: '#D6CBB8',
-            textMain: '#18221D',
-            textMuted: '#5A655E',
-            success: '#2E7D32',
-            warning: '#ED6C02',
-            danger: '#D32F2F'
-          },
-          fontFamily: {
-            heading: ['"Crimson Text"', 'Georgia', 'serif'],
-            sans: ['Inter', 'system-ui', 'sans-serif']
-          }
-        }
-      }
-    };
-  </script>
+  <!-- ЛР12: CSS шрифтів не блокує першу відмальовку (font-display: swap уже є) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="custom-styles.css">
   <!-- ЛР10: CSS плагіна — у <head>. Завантаження без блокування рендеру (аудит: aos.css затримував LCP);
        стилі потрібні лише блокам нижче першого екрана. integrity — захист від підміни файлу на CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
+  <!-- ЛР12: зібраний Tailwind CSS 3.4.17 замість Play CDN. Останнім серед стилів — як і <style>, який CDN додавав у кінець <head>: каскад не змінюється -->
+  <link rel="stylesheet" href="css/tailwind.css">
   <!-- ЛР10: бібліотеки через jsDelivr (точні версії, defer зберігає порядок). Popper — перед Tippy -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha384-n1AULnKdMJlK1oQCLNDL9qZsDgXtH6jRYFCpBtWFc+a9Yve0KSoMn575rk755NJZ" crossorigin="anonymous" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.js" integrity="sha384-DsT1q/+aTIkNUICSMoPHLh8RDdgN2BaPm3ThHPGAuETCIdf1vPGwFsoMy/SrKZ7W" crossorigin="anonymous" defer></script>
@@ -96,7 +87,7 @@
         <span aria-hidden="true">☰</span>
       </button>
     </div>
-    <div class="mobile-menu-panel absolute left-0 overflow-hidden pointer-events-none right-0 top-full -translate-y-2 max-h-0 border-b border-borderWarm opacity-0 shadow-xl duration-200 transition-all xl:hidden" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-panel absolute left-0 overflow-hidden pointer-events-none right-0 top-full -translate-y-2 max-h-0 border-b border-borderWarm opacity-0 shadow-xl duration-200 transition-all xl:hidden" id="mobileMenu" aria-hidden="true" inert>
       <nav class="grid gap-1 max-w-7xl mx-auto px-4 py-4 sm:px-6" aria-label="Мобільна навігація">
         <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html#slots">Вільні слоти</a>
         <a class="px-3 py-3 text-textMain text-sm rounded hover:bg-creamMuted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="index.html#why">Переваги</a>
@@ -128,8 +119,8 @@
         <div class="profile-gallery">
           <figure class="profile-portrait" id="photo">
             <div class="portrait-illustration" id="portraitView" role="img" aria-label="Портрет барбера"><span aria-hidden="true">АК</span></div>
-            <figcaption id="portraitCaption">Портрет барбера</figcaption>
             <span class="portrait-verified"><svg class="icon" aria-hidden="true"><use href="#n-shield"/></svg><span id="portraitVerified">Верифікований</span></span>
+            <figcaption id="portraitCaption">Портрет барбера</figcaption>
           </figure>
           <ul class="profile-thumbnails" id="thumbs" aria-label="Вигляд профілю"></ul>
         </div>
@@ -250,7 +241,7 @@
         </div>
         <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-5">
           <div class="flex flex-col gap-4 rounded border border-borderWarm dark:border-[#2C4A39] bg-white dark:bg-[#1B3326] p-5 lg:col-span-2">
-            <img class="aspect-video w-full rounded object-cover" id="locPhoto" src="assets/images/barbers/andrii-workplace.jpg" alt="Робоче місце барбера" width="640" height="360" loading="lazy">
+            <img class="aspect-video w-full rounded object-cover" id="locPhoto" src="assets/images/barbers/andrii-workplace.webp" alt="Робоче місце барбера" width="640" height="360" loading="lazy">
             <h3 class="text-lg font-semibold" id="locShop">Барбершоп</h3>
             <dl class="grid gap-2 text-sm">
               <div class="flex gap-2"><dt class="w-24 shrink-0 text-textMuted dark:text-[#B8C4BB]">Адреса</dt><dd id="locAddress"></dd></div>

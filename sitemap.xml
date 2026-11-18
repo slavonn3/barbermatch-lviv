@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://slavonn3.github.io/barbermatch-lviv/</loc></url>
-  <url><loc>https://slavonn3.github.io/barbermatch-lviv/barber.html?id=1</loc></url>
-  <url><loc>https://slavonn3.github.io/barbermatch-lviv/barber.html?id=2</loc></url>
-  <url><loc>https://slavonn3.github.io/barbermatch-lviv/barber.html?id=3</loc></url>
-  <url><loc>https://slavonn3.github.io/barbermatch-lviv/create.html</loc></url>
-  <url><loc>https://slavonn3.github.io/barbermatch-lviv/support.html</loc></url>
+  <url><loc>https://barbermatch-lviv.vercel.app/</loc></url>
+  <url><loc>https://barbermatch-lviv.vercel.app/barber.html?id=1</loc></url>
+  <url><loc>https://barbermatch-lviv.vercel.app/barber.html?id=2</loc></url>
+  <url><loc>https://barbermatch-lviv.vercel.app/barber.html?id=3</loc></url>
+  <url><loc>https://barbermatch-lviv.vercel.app/create.html</loc></url>
+  <url><loc>https://barbermatch-lviv.vercel.app/support.html</loc></url>
 </urlset>
 

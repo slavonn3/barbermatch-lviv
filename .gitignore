@@ -17,3 +17,7 @@ dist/
 *.pdf
 _draft*
 _prototype*
+
+# ЛР12: CI / Lighthouse / Vercel CLI
+.lighthouseci/
+.vercel/

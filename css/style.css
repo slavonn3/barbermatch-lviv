@@ -2152,28 +2152,28 @@ select {
 }
 
 .i-cut {
-  -webkit-mask-image: url("../assets/icons/i-cut.png");
-  mask-image: url("../assets/icons/i-cut.png");
+  -webkit-mask-image: url("../assets/icons/i-cut.webp");
+  mask-image: url("../assets/icons/i-cut.webp");
 }
 
 .i-beard {
-  -webkit-mask-image: url("../assets/icons/i-beard.png");
-  mask-image: url("../assets/icons/i-beard.png");
+  -webkit-mask-image: url("../assets/icons/i-beard.webp");
+  mask-image: url("../assets/icons/i-beard.webp");
 }
 
 .i-cal {
-  -webkit-mask-image: url("../assets/icons/i-cal.png");
-  mask-image: url("../assets/icons/i-cal.png");
+  -webkit-mask-image: url("../assets/icons/i-cal.webp");
+  mask-image: url("../assets/icons/i-cal.webp");
 }
 
 .i-pin {
-  -webkit-mask-image: url("../assets/icons/i-pin.png");
-  mask-image: url("../assets/icons/i-pin.png");
+  -webkit-mask-image: url("../assets/icons/i-pin.webp");
+  mask-image: url("../assets/icons/i-pin.webp");
 }
 
 .i-match {
-  -webkit-mask-image: url("../assets/icons/i-match.png");
-  mask-image: url("../assets/icons/i-match.png");
+  -webkit-mask-image: url("../assets/icons/i-match.webp");
+  mask-image: url("../assets/icons/i-match.webp");
 }
 
 .site-header > .role-switch {

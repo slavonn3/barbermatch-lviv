@@ -1,0 +1,63 @@
+# CI/CD BarberMatch Lviv (ЛР №12)
+# push у main: спочатку «Перевірка якості», потім (лише якщо вона пройшла) «Деплой на Vercel» (Production).
+# pull request: лише «Перевірка якості», без деплою.
+# Автодеплой Vercel для main вимкнено у vercel.json, тож продакшн оновлює тільки цей конвеєр.
+name: CI/CD Production Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: production-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Перевірка якості
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22        # @lhci/cli 0.16 потребує Node 22.19 або новіший
+          cache: npm
+      - run: npm ci
+      - name: Збірка CSS і перевірка актуальності
+        run: |
+          npm run build:css
+          git diff --exit-code -- css/tailwind.css
+      - name: Валідація HTML
+        run: npm run lint:html
+      - name: Lighthouse CI
+        run: npm run lhci
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci
+
+  deploy:
+    name: Деплой на Vercel
+    needs: quality
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - run: npm install --global vercel@65.16.0
+      - run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

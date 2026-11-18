@@ -1,0 +1,16 @@
+{
+  "name": "barbermatch-lviv",
+  "private": true,
+  "description": "BarberMatch Lviv — статичний сайт; npm потрібен лише для збірки CSS і перевірок якості в CI",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i css/tailwind.src.css -o css/tailwind.css --minify",
+    "lint:html": "html-validate \"*.html\"",
+    "lhci": "lhci autorun",
+    "check": "npm run build:css && npm run lint:html && npm run lhci"
+  },
+  "devDependencies": {
+    "@lhci/cli": "0.16.1",
+    "html-validate": "11.21.1",
+    "tailwindcss": "3.4.17"
+  }
+}
