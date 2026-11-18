@@ -1012,3 +1012,94 @@ nav[aria-label="Хлібні крихти"]:not(.breadcrumb) li > a::after { ins
 @media (min-width: 1024px) {
   #barberBadges:empty { min-height: 27px; }
 }
+
+/* ==========================================================================
+   Правки викладача 1: поява головного фону Hero при першому вході в сесії та при оновленні (F5).
+   Клас html.hero-intro ставить inline-скрипт у <head> index.html (sessionStorage + тип навігації).
+   Анімуються лише transform фону та opacity вуалі: фото видно з першого кадру (LCP/CLS без змін).
+   Текст, кнопки й метрики Hero не анімуються. .hero-section уже має overflow: hidden.
+   ========================================================================== */
+.hero-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #0B1610;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.hero-intro .hero-backdrop {
+    animation: hero-backdrop-settle 1.8s cubic-bezier(.2, .7, .2, 1) both;
+  }
+
+  /* «Наче вмикається світло»: темна вуаль поверх фото тане */
+  html.hero-intro .hero-backdrop::after {
+    animation: hero-veil-fade 1.4s cubic-bezier(.2, .7, .2, 1) both;
+  }
+}
+
+@keyframes hero-backdrop-settle {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+
+@keyframes hero-veil-fade {
+  from { opacity: .55; }
+  to { opacity: 0; }
+}
+
+/* ==========================================================================
+   Правки викладача 3: посилання «просто обери слот» у тексті #join.
+   Стиль наявного .text-link; у суцільному тексті додаємо підкреслення, щоб посилання
+   відрізнялося не лише кольором (WCAG 1.4.1, Lighthouse link-in-text-block)
+   ========================================================================== */
+.join-copy .text-link {
+  font-size: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+
+.join-copy .text-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ==========================================================================
+   Правки викладача 4: реакція пунктів переваг Hero на наведення.
+   У спокої вигляд як раніше: відступи «пігулки» компенсовані від’ємними полями,
+   тож текст і іконки стоять на тих самих місцях. Пункти нічого не відкривають —
+   лишаються <li> без tabindex (без порожніх зупинок Tab), ефект лише на :hover.
+   (hover: hover) — щоб на сенсорних екранах стан не «залипав» після дотику.
+   ========================================================================== */
+.hero-perks li {
+  margin: -5px -12px;
+  padding: 4px 11px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.hero-perks .icon {
+  transition: color .2s ease;
+}
+
+@media (hover: hover) {
+  .hero-perks li:hover {
+    border-color: rgb(200 125 50 / 50%);
+    background: rgb(200 125 50 / 14%);
+    color: var(--color-text-on-dark);
+    transform: translateY(-2px);
+  }
+
+  .hero-perks li:hover .icon {
+    color: #F6D3A6;
+  }
+}
+
+/* Без підйому — лише зміна кольору (тривалість переходів уже скорочує style.css) */
+@media (prefers-reduced-motion: reduce) {
+  .hero-perks li:hover {
+    transform: none;
+  }
+}
