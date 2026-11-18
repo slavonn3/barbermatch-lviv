@@ -1048,3 +1048,19 @@ nav[aria-label="Хлібні крихти"]:not(.breadcrumb) li > a::after { ins
   from { opacity: .55; }
   to { opacity: 0; }
 }
+
+/* ==========================================================================
+   Правки викладача 3: посилання «просто обери слот» у тексті #join.
+   Стиль наявного .text-link; у суцільному тексті додаємо підкреслення, щоб посилання
+   відрізнялося не лише кольором (WCAG 1.4.1, Lighthouse link-in-text-block)
+   ========================================================================== */
+.join-copy .text-link {
+  font-size: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+
+.join-copy .text-link:hover {
+  text-decoration-thickness: 2px;
+}

@@ -341,8 +341,9 @@ function initializeRoleSwitches() {
       if (input.checked) setRole(input.value);
     });
   });
-  if (!roleButtons.length && !roleInputs.length) return;
+  if (!roleButtons.length && !roleInputs.length) return setRole;
   setRole(document.querySelector('input[name="accountRole"]:checked')?.value || 'model');
+  return setRole;
 }
 
 function initializeSlotFilters() {
@@ -441,7 +442,7 @@ function initializeSlotFilters() {
   applyFilters();
 }
 
-function initializeRegistration() {
+function initializeRegistration(setRole) {
   const form = document.querySelector('#regForm');
   if (!form) return;
 
@@ -456,8 +457,13 @@ function initializeRegistration() {
   };
   const controls = Object.keys(validators).map((id) => document.getElementById(id));
   const status = document.querySelector('#formStatus');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const submitLabel = submitButton.textContent;
+  const phoneHint = document.querySelector('#phoneMessage').textContent;
+  const SUBMIT_DELAY = 600; // як у формі підтримки: захист від подвійного натискання
   let otpRequested = false;
   let otpPhone = '';
+  let isSubmitting = false;
 
   function validateControl(control) {
     const result = validators[control.id](control.value);
@@ -503,6 +509,7 @@ function initializeRegistration() {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+    if (isSubmitting) return; // захист від подвійного натискання
     const validFields = controls.map(validateControl).every(Boolean);
     const consent = document.querySelector('#regConsent');
     const consentValid = consent.checked;
@@ -519,9 +526,101 @@ function initializeRegistration() {
       status.classList.add('is-error');
       return;
     }
-    status.textContent = 'Демо-режим: дані перевірено. Для створення акаунта потрібне підключення до сервера.';
+    status.textContent = '';
     status.classList.remove('is-error');
+    isSubmitting = true;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Перевіряємо…';
+    const name = document.querySelector('#regName').value.trim();
+    const role = document.querySelector('input[name="accountRole"]:checked')?.value || 'model';
+
+    window.setTimeout(() => {
+      resetForm();
+      submitButton.disabled = false;
+      submitButton.textContent = submitLabel;
+      isSubmitting = false;
+      openSuccessModal(name, role);
+    }, SUBMIT_DELAY);
   });
+
+  /* Повне скидання: значення, стани валідації, тексти повідомлень, OTP і роль «Модель» */
+  function resetForm() {
+    form.reset();
+    [...controls, document.querySelector('#regConsent')].forEach((control) => {
+      control.classList.remove('is-valid', 'is-invalid');
+      control.removeAttribute('aria-invalid');
+    });
+    form.querySelectorAll('.form-message').forEach((message) => {
+      message.textContent = '';
+      message.classList.remove('is-success');
+    });
+    document.querySelector('#phoneMessage').textContent = phoneHint;
+    status.textContent = '';
+    status.classList.remove('is-error');
+    otpRequested = false;
+    otpPhone = '';
+    if (typeof setRole === 'function') setRole('model'); // перебудовує select «Тип волосся»
+  }
+
+  /* ---------- Вікно подяки (як #successModal у support.html) ---------- */
+  const modal = document.querySelector('#regSuccessModal');
+  const modalName = document.querySelector('#regSuccessName');
+  const modalText = document.querySelector('#regSuccessText');
+  const modalAction = document.querySelector('#regSuccessAction');
+  const modalClose = document.querySelector('#regSuccessClose');
+  let returnFocus = true;
+
+  const SUCCESS_CONTENT = {
+    model: {
+      text: 'Ми нагадаємо про запис за 24 і 2 години. Тепер можна обрати перший слот.',
+      action: 'До слотів',
+      href: '#slots'
+    },
+    barber: {
+      text: 'Тепер можна опублікувати перший слот для моделей.',
+      action: 'Створити заявку',
+      href: 'create.html'
+    }
+  };
+
+  function openSuccessModal(name, role) {
+    const content = SUCCESS_CONTENT[role] || SUCCESS_CONTENT.model;
+    if (!modal || typeof modal.showModal !== 'function') {
+      // Запасний варіант без <dialog>: повідомлення в live-регіоні, без alert()
+      status.textContent = `Дякуємо, ${name}! Акаунт створено (демонстрація: дані не надсилались на сервер). ${content.text}`;
+      submitButton.focus();
+      return;
+    }
+    modalName.textContent = name; // лише textContent — ім’я ніколи не рендериться як HTML
+    modalText.textContent = content.text;
+    modalAction.textContent = content.action;
+    modalAction.setAttribute('href', content.href);
+    returnFocus = true;
+    document.body.classList.add('overflow-hidden');
+    modal.showModal();
+    modalAction.focus();
+  }
+
+  if (modal) {
+    modalClose.addEventListener('click', () => modal.close());
+    // Клік по затемненому фону: target — сам <dialog>; клік по картці має target усередині
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) modal.close();
+    });
+    // «До слотів»: закриваємо вікно й даємо посиланню прокрутити до #slots (фокус іде туди ж).
+    // «Створити заявку» просто переходить на create.html
+    modalAction.addEventListener('click', () => {
+      if (modalAction.getAttribute('href') !== '#slots') return;
+      returnFocus = false;
+      document.body.classList.remove('overflow-hidden');
+      modal.close();
+    });
+    // Escape закриває нативно (подія cancel → close)
+    modal.addEventListener('close', () => {
+      document.body.classList.remove('overflow-hidden');
+      if (returnFocus) submitButton.focus();
+    });
+  }
 }
 
 /* photos — { before, after, focus, caption } з BARBERS; без них лишаються стилізовані панелі */
@@ -759,8 +858,8 @@ fillDistrictOptions();
 initializeThemeToggle();
 initializeMobileMenu();
 initializeDistrictNavigation();
-initializeRoleSwitches();
+const syncAccountRole = initializeRoleSwitches();
 initializeSlotFilters();
-initializeRegistration();
+initializeRegistration(syncAccountRole);
 initializeBarberProfile();
 initializeComparisonSliders();
