@@ -192,7 +192,8 @@ function initializeMobileMenu() {
   });
 
   menu.addEventListener('click', (event) => {
-    if (event.target.closest('a') || event.target.closest('[data-role]')) closeMenu();
+    /* Перемикач ролі в меню тепер теж посилання — закривається разом з іншими */
+    if (event.target.closest('a')) closeMenu();
   });
 
   document.addEventListener('keydown', (event) => {
@@ -286,6 +287,8 @@ function initializeDistrictNavigation() {
 }
 
 function initializeRoleSwitches() {
+  /* Перемикач у шапці тепер — посилання (слоти / створення заявки), тож [data-role] лишився
+     тільки в панелі «Швидкий підбір». Синхронізація з радіо реєстрації — як і раніше */
   const roleButtons = document.querySelectorAll('[data-role]');
   const roleInputs = document.querySelectorAll('input[name="accountRole"]');
   const hairSelect = document.querySelector('#regHair');
@@ -297,16 +300,10 @@ function initializeRoleSwitches() {
       button.classList.toggle('is-active', active);
       button.classList.toggle('bg-primary', active);
       button.classList.toggle('text-cream', active);
-      if (button.closest('header')) {
-        /* Світла шапка: неактивна кнопка лишається темним текстом на кремовому */
-        button.classList.toggle('text-textMain', !active);
-        button.classList.toggle('hover:bg-creamMuted', !active);
-      } else {
-        /* Темна панель «Швидкий підбір» */
-        button.classList.toggle('text-[#E2D9C8]', !active);
-        button.classList.toggle('border-white/20', !active);
-        button.classList.toggle('hover:bg-white/10', !active);
-      }
+      /* Темна панель «Швидкий підбір» */
+      button.classList.toggle('text-[#E2D9C8]', !active);
+      button.classList.toggle('border-white/20', !active);
+      button.classList.toggle('hover:bg-white/10', !active);
       button.setAttribute('aria-pressed', String(active));
     });
     roleInputs.forEach((input) => {
@@ -344,8 +341,8 @@ function initializeRoleSwitches() {
       if (input.checked) setRole(input.value);
     });
   });
-  const defaultRole = document.body.dataset.page === 'create' ? 'barber' : 'model';
-  setRole(document.querySelector('input[name="accountRole"]:checked')?.value || defaultRole);
+  if (!roleButtons.length && !roleInputs.length) return;
+  setRole(document.querySelector('input[name="accountRole"]:checked')?.value || 'model');
 }
 
 function initializeSlotFilters() {
