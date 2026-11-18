@@ -13,8 +13,8 @@ const BARBERS = {
     district: 'Сихів', shop: 'Barbershop «Сихів Cut»', address: 'вул. Хоткевича, 12, Львів', videoId: 'spKKeXbLt3s',
     experience: '1,5 року практики', schedule: 'Пн–Пт · 17:00–21:00', joined: 'червня 2026', cuts: 18, attendance: 100, reliability: 96,
     photos: {
-      portrait: `${PHOTO_DIR}andrii-portrait.jpg`, workplace: `${PHOTO_DIR}andrii-workplace.jpg`,
-      before: `${PHOTO_DIR}andrii-before.jpg`, after: `${PHOTO_DIR}andrii-after.jpg`,
+      portrait: `${PHOTO_DIR}andrii-portrait.webp`, workplace: `${PHOTO_DIR}andrii-workplace.webp`,
+      before: `${PHOTO_DIR}andrii-before.webp`, after: `${PHOTO_DIR}andrii-after.webp`,
       focus: '45%', caption: 'текстурна стрижка замість важкого чубчика'
     },
     bio: 'Другий рік у барберингу: закінчив курси у Львові й тепер щотижня практикуюсь на моделях. Найбільше люблю текстурні стрижки на середнє волосся — коли прибираєш зайву вагу, і волосся саме лягає без укладки. Часто працюю з підлітками та студентами, які хочуть піти від «шапки» на голові до живої форми. Працюю у затишному барбершопі на Сихові, інструмент дезінфікую перед кожним клієнтом.',
@@ -45,8 +45,8 @@ const BARBERS = {
     experience: '1 рік практики', schedule: 'Вт–Сб · 11:00–19:00', joined: 'липня 2026', cuts: 14, attendance: 93, reliability: 92,
     photos: {
       /* Портрет: Antoni Shkraba / Pexels (Pexels License, безкоштовне використання) */
-      portrait: `${PHOTO_DIR}oleh-portrait.jpg`, workplace: `${PHOTO_DIR}oleh-workplace.jpg`,
-      before: `${PHOTO_DIR}oleh-before.jpg`, after: `${PHOTO_DIR}oleh-after.jpg`,
+      portrait: `${PHOTO_DIR}oleh-portrait.webp`, workplace: `${PHOTO_DIR}oleh-workplace.webp`,
+      before: `${PHOTO_DIR}oleh-before.webp`, after: `${PHOTO_DIR}oleh-after.webp`,
       focus: '35%', caption: 'фейд із текстурою замість відрослих кучерів'
     },
     bio: 'Барбер зі Львова, рік практики, фанат важкої музики й чистих переходів. Моя тема — фейди та борода: беру відросле волосся й неохайну бороду і збираю з них цілісний образ, де стрижка й борода працюють разом. Перед роботою показую на фото кілька варіантів довжини, після — пояснюю, як підтримувати форму вдома. Шукаю моделей із густою бородою або відрослим волоссям, які давно хочуть змін. Поки беру символічну плату лише за розхідники.',
@@ -74,8 +74,8 @@ const BARBERS = {
     district: 'Личаківський', shop: 'Студія «Лінія»', address: 'вул. Личаківська, 58, Львів', videoId: 'gSQPQR1RKK8',
     experience: '10 місяців практики', schedule: 'Ср–Нд · 12:00–20:00', joined: 'серпня 2026', cuts: 21, attendance: 98, reliability: 98,
     photos: {
-      portrait: `${PHOTO_DIR}marta-portrait.jpg`, workplace: `${PHOTO_DIR}marta-workplace.jpg`,
-      before: `${PHOTO_DIR}marta-before.jpg`, after: `${PHOTO_DIR}marta-after.jpg`,
+      portrait: `${PHOTO_DIR}marta-portrait.webp`, workplace: `${PHOTO_DIR}marta-workplace.webp`,
+      before: `${PHOTO_DIR}marta-before.webp`, after: `${PHOTO_DIR}marta-after.webp`,
       focus: '40%', caption: 'каре зі шторками з відрослого волосся'
     },
     bio: 'Майстриня зі світлої студії на Личакові. Спеціалізуюся на коротких формах: каре, боб, шторки та м’які унісекс-стрижки, які легко носити щодня. Перед роботою завжди обговорюю форму обличчя й те, скільки часу ви готові приділяти укладці. Зараз збираю портфоліо, тому запрошую моделей із волоссям до плечей і нижче — і навіть доплачую за готовність до змін.',
@@ -102,6 +102,20 @@ const BARBERS = {
 const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[character]));
+
+// ЛР12: iframe відео й мапи отримують src лише коли блок підходить до екрана (запас 300 px).
+// loading="lazy" у Chrome має поріг 1250–2500 px, тож на мобільному YouTube (856 КБ JS) вантажився
+// одразу й займав головний потік. Вигляд той самий: поки блок далеко, iframe порожній, як і з lazy.
+function loadWhenNear(frame, src) {
+  if (!frame) return;
+  if (!('IntersectionObserver' in window)) { frame.src = src; return; }
+  const observer = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    frame.src = src;
+    observer.disconnect();
+  }, { rootMargin: '300px 0px' });
+  observer.observe(frame);
+}
 
 function fillDistrictOptions() {
   document.querySelectorAll('#filterDistrict, #regDistrict').forEach((select) => {
@@ -567,6 +581,11 @@ function initializeBarberProfile() {
   const barber = BARBERS[id] || BARBERS[1];
   const fullName = barber.name;
   document.title = `${fullName} — барбер у Львові | BarberMatch`;
+  // ЛР12: після вибору барбера канонічна адреса й og:url — саме цього профілю (у HTML — загальна barber.html для роботів без JS)
+  const profileUrl = `https://barbermatch-lviv.vercel.app/barber.html?id=${BARBERS[id] ? encodeURIComponent(id) : '1'}`;
+  document.querySelector('link[rel="canonical"]')?.setAttribute('href', profileUrl);
+  document.querySelector('meta[property="og:url"]')?.setAttribute('content', profileUrl);
+  document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
   document.querySelector('#breadcrumbName').textContent = fullName;
   document.querySelector('#barberName').textContent = fullName;
   document.querySelector('#portraitVerified').textContent = barber.gender;
@@ -587,7 +606,7 @@ function initializeBarberProfile() {
   const videoSection = document.querySelector('#video');
   if (barber.videoId) {
     const video = document.querySelector('#workVideo');
-    video.src = `https://www.youtube-nocookie.com/embed/${barber.videoId}${barber.videoQuery || ''}`;
+    loadWhenNear(video, `https://www.youtube-nocookie.com/embed/${barber.videoId}${barber.videoQuery || ''}`);
     video.title = `Відео роботи барбера: ${fullName}`;
     document.querySelector('#workVideoLink').href = `https://www.youtube.com/watch?v=${barber.videoId}`;
   } else {
@@ -601,7 +620,7 @@ function initializeBarberProfile() {
   document.querySelector('#locPhoto').src = barber.photos.workplace;
   document.querySelector('#locPhoto').alt = `Робоче місце: ${barber.shop}`;
   document.querySelector('#locMap').title = `Мапа: ${barber.shop}, ${barber.address}`;
-  document.querySelector('#locMap').src = `https://maps.google.com/maps?q=${mapQuery}&z=16&output=embed`;
+  loadWhenNear(document.querySelector('#locMap'), `https://maps.google.com/maps?q=${mapQuery}&z=16&output=embed`);
   document.querySelector('#locRoute').href = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
   document.querySelector('#bBio').textContent = barber.bio;
   document.querySelector('#bTags').innerHTML = barber.specialties.map((tag) => `<li>${escapeHtml(tag)}</li>`).join('');
