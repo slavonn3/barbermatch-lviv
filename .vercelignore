@@ -1,0 +1,10 @@
+node_modules
+.lighthouseci
+.github
+package.json
+package-lock.json
+tailwind.config.js
+css/tailwind.src.css
+.htmlvalidate.json
+.lighthouserc.json
+netlify.toml
